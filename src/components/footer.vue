@@ -13,10 +13,15 @@ export default {};
 </script>
 
 <style scoped lang="scss">
-  .footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.footer {
+  height: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  align-items: center;
+  a {
+    color: black;
   }
-
+}
 </style>

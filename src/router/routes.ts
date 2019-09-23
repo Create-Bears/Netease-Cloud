@@ -1,43 +1,61 @@
+const Login = () =>
+  import(/* webpackChunkName: "login" */ "@/views/login/index.vue");
+
+const Main = () =>
+  import(/* webpackChunkName: "main" */ "@/views/main/index.vue");
+
+const Home = () =>
+  import(/* webpackChunkName: "home" */ "@/views/main/home/index.vue");
+
+const Special = () =>
+  import(/* webpackChunkName: "special" */ "@/views/main/special/index.vue");
+const Classify = () =>
+  import(/* webpackChunkName: "classify" */ "@/views/main/classify/index.vue");
+const Shopcar = () =>
+  import(/* webpackChunkName: "shopcar" */ "@/views/main/shopcar/index.vue");
+const Mine = () =>
+  import(/* webpackChunkName: "mine" */ "@/views/main/mine/index.vue");
+
 export default [
   {
     path: "/",
     name: "login",
-    component: ()=>import('@/views/login/index.vue')
+    component: Login
   },
   {
     path: "/main",
     name: "main",
-    component: () =>import("@/views/main/index.vue"),
-    children:[
+    component: Main,
+    children: [
       {
-        redirect:'/main/home',
-        path:'/main'
+        redirect: "/main/home",
+        path: "/main"
       },
       {
         path: "/main/home",
         name: "home",
-        component: () =>import("@/views/main/home/index.vue"),
+        component: Home
       },
       {
         path: "/main/special",
         name: "special",
-        component: () =>import("@/views/main/special/index.vue"),
+        component: Special
       },
       {
         path: "/main/classify",
         name: "classify",
-        component: () =>import("@/views/main/classify/index.vue"),
+        component: Classify
       },
       {
         path: "/main/shopcar",
         name: "shopcar",
-        component: () =>import("@/views/main/shopcar/index.vue"),
+        component: Shopcar
       },
       {
         path: "/main/mine",
         name: "mine",
-        component: () =>import("@/views/main/mine/index.vue"),
+        component: Mine
       }
     ]
   }
-]
+];

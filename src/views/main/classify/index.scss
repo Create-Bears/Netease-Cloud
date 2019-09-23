@@ -1,0 +1,97 @@
+
+  %juzhong{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .content {
+    height: 100%;
+    overflow: hidden;
+    .searchWrap {
+      width: 100%;
+      height: 0.4rem;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .searchInput {
+        width: 90%;
+        height: 70%;
+        background: #ededed;
+        border-radius: 0.05rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.14rem;
+        color: #666;
+        input {
+          border: 0;
+          outline: 0;
+          background: #ededed;
+        }
+      }
+    }
+    .classify-con {
+      display: flex;
+      height: 100%;
+     
+      .left {
+        flex: 2;
+        height: 100%;
+        li {
+          width: 100%;
+          text-align: center;
+          font-size: 0.14rem;
+          height: 0.44rem;
+          line-height: 0.44rem;
+        }
+        .activeLi{
+          border-left:2px solid #108ee9;
+          color: #108ee9;
+        }
+      }
+      .right {
+        flex: 8;
+        height: 100%;
+        overflow-y: scroll;
+        .right-titleImg{
+          width: 100%;
+          height: 1rem;
+          position: relative;
+          div{
+            width: 100%;
+            line-height: 1rem;
+            text-align: center;
+            position: absolute;
+            color: #fff;
+            font-size: 0.14rem;
+          }
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .right-title{
+          @extend %juzhong;
+          padding: 0.1rem;
+          font-size: 0.16rem;
+          color: #2196f3;
+        }
+        .right-listData{
+          display: flex;
+          flex-wrap: wrap;
+          dl{
+            width: 50%;
+            @extend %juzhong;
+            flex-direction: column;
+            dt{
+              img{
+                width: 1.27rem;
+                height: 1.27rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

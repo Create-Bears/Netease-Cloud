@@ -13,9 +13,7 @@ export default {
   },
   actions: {
     async getUserLogin({commit}: any, payload: object) {
-      console.log(payload)
       let result = await UserLogin(payload)
-      console.log(result)
       window.localStorage.setItem('token',result.data.data.sessionKey)
       commit('setSession',result.data)
     }

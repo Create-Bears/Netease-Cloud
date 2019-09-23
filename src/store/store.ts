@@ -1,11 +1,15 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import login from './modules/login'
+import classify from './modules/classify'
+import search from './modules/search'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules:{
-    login
+    login,
+    classify,
+    search
   }
 });

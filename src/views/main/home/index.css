@@ -1,4 +1,4 @@
-.channe .channe-item span:nth-child(1), .channe .channe-item span:nth-child(2), .smallOne .title h3, .smallTwo .title h3, .smallThree .title h3, .smallThree .content div .imgs {
+.channe .channe-item span:nth-child(1), .channe .channe-item span:nth-child(2), .smallOne .title h3, .smallTwo .title h3, .smallThree .title h3, .smallThree .content div .imgs, .smallFour .title h3, .smallFour .content div .imgs {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -215,6 +215,75 @@
 }
 
 .smallThree .content div .fonts .price {
+  font-size: 0.15rem;
+  color: darkred;
+}
+
+.smallFour {
+  width: 100%;
+  height: auto;
+  margin-top: 0.1rem;
+}
+
+.smallFour .title h3 {
+  height: 0.5rem;
+}
+
+.smallFour .content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.smallFour .content div {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.smallFour .content div:after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: darkgrey;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: 1px solid darkgrey;
+  color: darkgrey;
+  transform: scaleY(0.2);
+}
+
+.smallFour .content div .imgs {
+  flex: 4;
+  border: none;
+}
+
+.smallFour .content div .imgs img {
+  width: 100%;
+  height: 70%;
+  border: none;
+}
+
+.smallFour .content div .fonts {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.15rem;
+  padding: 6% 0 0 0;
+  border: none;
+}
+
+.smallFour .content div .fonts span {
+  margin: 4% 0;
+  justify-content: flex-start;
+  border: none;
+}
+
+.smallFour .content div .fonts .descript {
+  color: gray;
+}
+
+.smallFour .content div .fonts .price {
   font-size: 0.15rem;
   color: darkred;
 }

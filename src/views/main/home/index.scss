@@ -207,3 +207,55 @@
         }
     }
 }
+
+.smallFour {
+    width: 100%;
+    height: auto;
+    margin-top: 0.1rem;
+    .title {
+        h3 {
+            height: 0.5rem;
+            @extend %juzhong;
+        }
+    }
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        div {
+            width: 100%;
+            display: flex;
+            position: relative;
+            @include setTopBorder();
+            .imgs {
+                flex: 4;
+                @extend %juzhong;
+                border: none;
+                img {
+                    width: 100%;
+                    height: 70%;
+                    border: none;
+                }
+            }
+            .fonts {
+                flex: 6;
+                display: flex;
+                flex-direction: column;
+                font-size: 0.15rem;
+                padding: 6% 0 0 0;
+                border: none;
+                span {
+                    margin: 4% 0;
+                    justify-content: flex-start;
+                    border: none;
+                }
+                .descript {
+                    color: gray;
+                }
+                .price {
+                    font-size: 0.15rem;
+                    color: darkred;
+                }
+            }
+        }
+    }
+}

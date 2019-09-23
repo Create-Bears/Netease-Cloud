@@ -1,20 +1,19 @@
 <template>
   <div class="container">
-      <router-view></router-view>
-      <Footer/>
+    <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Footer from '@/components/footer'
+import Footer from "@/components/footer";
 export default {
-  components:{
+  components: {
     Footer
   }
-}
+};
 </script>
 
 <style>
-@import url('index.scss');
- 
+@import url("index.scss");
 </style>

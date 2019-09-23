@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 
 const instance = axios.create({
   baseURL: 'http://127.0.0.1:8888',
@@ -15,12 +15,15 @@ instance.interceptors.request.use(function (config) {
 });
 
 // Add a response interceptor
-instance.interceptors.response.use(function (response) {
-  // Do something with response data
-  return response;
-}, function (error) {
-  // Do something with response error
-  return Promise.reject(error);
-})
+instance.interceptors.response.use(
+  function(response) {
+    // Do something with response data
+    return response;
+  },
+  function(error) {
+    // Do something with response error
+    return Promise.reject(error);
+  }
+);
 
-export default instance
+export default instance;

@@ -1,14 +1,29 @@
-import { getDetailList } from '@/service'
+import { getDetailList,goodsListData } from '@/service'
 
 export default {
   namespaced: true,
   state: {
     detailList:{},
+    name:'',
+    info:{},
+    comment:{},
+    commentData:{},
+    attribute:[],
+    issue:[],
+    productList:[],
   },
   mutations: {
     setDetailList(state:any,payload:any){
       state.detailList=payload;
-      console.log(state.detailList)
+      state.info=payload.info;
+      state.name=payload.brand.name;
+      state.comment=payload.comment;
+      state.commentData=payload.comment.data;
+      state.attribute=payload.attribute;
+      state.issue=payload.issue;
+    },
+    setPriductList(state:any,payload:any){
+      state.productList=payload;
     }
   },
   actions: {
@@ -16,6 +31,11 @@ export default {
       let result = await getDetailList(payload)
       console.log(result)
       commit('setDetailList',result.data.data)
+    },
+    async _goodsListData({commit}:any,payload:any){
+      let result =await goodsListData(payload);
+      console.log(result);
+      commit('setPriductList',result.data.data.goodsList)
     }
   }
 }

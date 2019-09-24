@@ -3,11 +3,24 @@ import { getFirstList } from "@/service/index";
 export default {
   namespaced: true,
   state: {
-    getList: {}
+    getList: {},
+    channels: [],
+    brandList: [],
+    newGoodsList: [],
+    hotGoodsList: [],
+    swiperSlides: [],
+    topicList: []
   },
   mutations: {
-    getBanner(state: { getList: any }, payload: any) {
-      state.getList = payload;
+    getBanner(state: any, payload: any) {
+      // state.getList = payload;
+      state.swiperSlides=payload.banner;
+      state.channels=payload.channels;
+      state.brandList=payload.brandList;
+      state.newGoodsList=payload.newGoodsList;
+      state.hotGoodsList=payload.hotGoodsList;
+      state.topicList=payload.topicList;
+
     }
   },
   actions: {

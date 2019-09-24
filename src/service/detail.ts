@@ -8,3 +8,12 @@ export let getDetailList = (id: any) => {
     }
   })
 }
+
+export let goodsListData=(id:any)=>{
+  let url ="/goods/related";
+  return request.get(url,{
+    params:{
+      id
+    }
+  })
+}

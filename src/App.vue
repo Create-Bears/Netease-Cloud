@@ -5,7 +5,7 @@
 </template>
 
 <style>
-@import '~@/assets/font_z4442rvj0hc/iconfont.css';
+@import '~@/assets/font_ceguai1zc1/iconfont.css';
 
 * {
   margin: 0;

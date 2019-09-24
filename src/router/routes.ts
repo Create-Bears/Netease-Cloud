@@ -65,7 +65,7 @@ export default [
     ]
   },
   {
-    path: "/categorys",
+    path: "/categorys/:id?",
     name: "categorys",
     component: Categorys
   },

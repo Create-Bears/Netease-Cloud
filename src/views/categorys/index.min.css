@@ -1,0 +1,1 @@
+.header div:nth-child(1),.header div:nth-child(2),.header div:nth-child(3){display:flex;justify-content:center;align-items:center}.header{height:0.5rem;display:flex;font-size:0.16rem}.header div:nth-child(1){flex:2}.header div:nth-child(2){flex:6}.header div:nth-child(3){flex:2}.nav{height:0.32rem;display:flex;justify-content:space-around;align-items:center}

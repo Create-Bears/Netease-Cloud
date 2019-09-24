@@ -1,0 +1,32 @@
+%juzhong {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    height: 0.5rem;
+    display: flex;
+    font-size: 0.16rem;
+    div {
+        &:nth-child(1) {
+            flex: 2;
+            @extend %juzhong;
+        }
+        &:nth-child(2) {
+            flex: 6;
+            @extend %juzhong;
+        }
+        &:nth-child(3) {
+            flex: 2;
+            @extend %juzhong;
+        }
+    }
+}
+
+.nav {
+    height: 0.32rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

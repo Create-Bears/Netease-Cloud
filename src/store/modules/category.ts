@@ -3,21 +3,17 @@ import { getCategoryList } from "@/service/index";
 export default {
   namespaced: true,
   state: {
-    category: {}
+    categorys: {}
   },
   mutations: {
-    getCategory(state: { category: any }, payload: any) {
-      state.category = payload;
+    getCategory(state: { categorys: any }, payload: any) {
+      state.categorys = payload;
     }
   },
   actions: {
-    _getCategoryList(context: any, payload: any) {
-      return new Promise((resolve, reject) => {
-        getCategoryList().then(res => {
-          context.commit("getCategory", res.data.data);
-        });
-        resolve();
-      });
+    async _getCategoryList({ commit }: any, payload: any) {
+      let result = await getCategoryList(payload);
+      commit("getCategory", result.data.data);
     }
   }
 };

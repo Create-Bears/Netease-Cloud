@@ -8,7 +8,12 @@
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
       <div class="channe">
-        <div class="channe-item" v-for="(item, index) in channels" :key="index">
+        <div
+          class="channe-item"
+          v-for="(item, index) in channels"
+          :key="index"
+          @click="jumpCategorys"
+        >
           <span>
             <img v-lazy="item.icon_url" alt="" />
           </span>
@@ -57,16 +62,35 @@
             </div>
           </div>
         </div>
-        <div class="smallFout">
+        <div class="smallFour">
           <div class="title">
             <h3>专题精选</h3>
           </div>
-          <swiper :options="swiperOption">
-            <swiper-slide v-for="(item, index) in topicList" :key="index">
-              <img width="100%" v-lazy="item.scene_pic_url" alt="" />
-            </swiper-slide>
-            <div class="swiper-pagination" slot="pagination"></div>
-          </swiper>
+          <div>
+            <scroll></scroll>
+          </div>
+        </div>
+        <div class="smallFive">
+          <div
+            class="bigWrapper"
+            v-for="(item, index) in categoryList"
+            :key="index"
+          >
+            <div class="title">
+              <h3>{{ item.name }}</h3>
+            </div>
+            <div class="content">
+              <div v-for="(itm, index) in item.goodsList" :key="index">
+                <span><img v-lazy="itm.list_pic_url" alt=""/></span>
+                <span class="names">{{ itm.name }}</span>
+                <span class="price">{{ itm.retail_price }}元起</span>
+              </div>
+              <div class="last">
+                <span>更多{{ item.name }}好物</span>
+                <span><img src="@/static/images/back.png" alt=""/></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -76,22 +100,30 @@
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import {mapState} from 'vuex'
+import scroll from "@/components/scroll.vue";
 import "swiper/dist/css/swiper.css";
 import "./index.scss";
 export default {
   name: "Home",
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
+    scroll
   },
   data() {
     return {
+      channels: [],
+      brandList: [],
+      newGoodsList: [],
+      hotGoodsList: [],
+      categoryList: [],
       swiperOption: {
         autoplay: true,
         pagination: {
           el: ".swiper-pagination"
         }
       },
+      swiperSlides: []
     };
   },
   created() {
@@ -105,6 +137,23 @@ export default {
     hotGoodsList:store=>store.main.hotGoodsList,
     topicList:store=>store.main.topicList,
   }),
+  methods: {
+    jumpCategorys() {
+      this.$router.push("/categorys");
+      // eslint-disable-next-line no-console
+      console.log(this.$router);
+    }
+  },
+  mounted() {
+    this.swiperSlides = this.$store.state.main.getList.banner;
+    this.channels = this.$store.state.main.getList.channel;
+    this.brandList = this.$store.state.main.getList.brandList;
+    this.newGoodsList = this.$store.state.main.getList.newGoodsList;
+    this.hotGoodsList = this.$store.state.main.getList.hotGoodsList;
+    this.categoryList = this.$store.state.main.getList.categoryList;
+    // eslint-disable-next-line no-console
+    console.log(this.$store.state.main);
+  }
 };
 </script>
 

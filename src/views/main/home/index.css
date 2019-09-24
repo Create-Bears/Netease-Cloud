@@ -1,4 +1,4 @@
-.channe .channe-item span:nth-child(1), .channe .channe-item span:nth-child(2), .smallOne .title h3, .smallTwo .title h3, .smallThree .title h3, .smallThree .content div .imgs {
+.channe .channe-item span:nth-child(1), .channe .channe-item span:nth-child(2), .smallOne .title h3, .smallTwo .title h3, .smallThree .title h3, .smallThree .content div .imgs, .smallFour .title h3, .smallFive .bigWrapper .title h3 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -217,4 +217,91 @@
 .smallThree .content div .fonts .price {
   font-size: 0.15rem;
   color: darkred;
+}
+
+.smallFour {
+  width: 100%;
+  height: auto;
+  margin-top: 0.1rem;
+  background: white;
+}
+
+.smallFour .title h3 {
+  height: 0.5rem;
+}
+
+.smallFive {
+  height: auto;
+  width: 100%;
+}
+
+.smallFive .bigWrapper {
+  height: auto;
+  width: 100%;
+}
+
+.smallFive .bigWrapper .title {
+  margin-top: 0.1rem;
+}
+
+.smallFive .bigWrapper .title h3 {
+  height: 0.5rem;
+}
+
+.smallFive .bigWrapper .content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.smallFive .bigWrapper .content div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.smallFive .bigWrapper .content div img {
+  width: 100%;
+  height: 70%;
+}
+
+.smallFive .bigWrapper .content div .names {
+  width: 1.6rem;
+  padding: 0 0 0 0.4rem;
+  font-size: 0.15rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.smallFive .bigWrapper .content div .price {
+  margin: 4% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.15rem;
+  color: darkred;
+}
+
+.smallFive .bigWrapper .last {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.smallFive .bigWrapper .last span:nth-child(1) {
+  width: 100%;
+  margin: 55% 0 0 0;
+  text-align: center;
+}
+
+.smallFive .bigWrapper .last span:nth-child(2) {
+  width: 100%;
+  text-align: center;
+  margin: -5% 0 0 0;
+}
+
+.smallFive .bigWrapper .last span:nth-child(2) img {
+  padding: 0.2rem;
+  height: 0.7rem;
+  width: 0.7rem;
 }

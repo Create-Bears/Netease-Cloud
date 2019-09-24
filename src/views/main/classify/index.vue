@@ -8,30 +8,30 @@
       </div>
       <div class="classify-con">
         <div class="left">
-          <li 
-          v-for="(item,index) in tabAllList" 
-          :key="item.id" 
-          @click="handClick(index,item.id)"
-          :class="currentIndex===index?'activeLi':'null'" 
-          >{{item.name}}</li>
+          <li
+            v-for="(item, index) in tabAllList"
+            :key="item.id"
+            @click="handClick(index, item.id)"
+            :class="currentIndex === index ? 'activeLi' : 'null'"
+          >
+            {{ item.name }}
+          </li>
         </div>
         <div class="right">
           <div class="right-titleImg">
             <div>
-              {{tabCurrentList.front_desc}}
+              {{ tabCurrentList.front_desc }}
             </div>
-            <img :src="tabCurrentList.wap_banner_url" alt="">
+            <img :src="tabCurrentList.wap_banner_url" alt="" />
           </div>
-          <div class="right-title">
-            -- {{tabCurrentList.name}}分类 --
-          </div>
+          <div class="right-title">-- {{ tabCurrentList.name }}分类 --</div>
           <div class="right-listData">
             <dl v-for="item in tabCurrentList.subCategoryList" :key="item.id">
               <dt>
-                <img :src="item.wap_banner_url" alt="">
+                <img :src="item.wap_banner_url" alt="" />
               </dt>
               <dd>
-                <li>{{item.name}}</li>
+                <li>{{ item.name }}</li>
               </dd>
             </dl>
           </div>
@@ -46,8 +46,8 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      currentIndex:0,
-    }
+      currentIndex: 0
+    };
   },
   computed: mapState({
     tabAllList: store => store.classify.tabAllList,
@@ -57,18 +57,18 @@ export default {
     this.$store.dispatch("classify/_getAllList");
   },
   methods: {
-    handClick(index,id){
-      this.currentIndex=index;
-      this.$store.dispatch('classify/_navListData',{id})
+    handClick(index, id) {
+      this.currentIndex = index;
+      this.$store.dispatch("classify/_navListData", { id });
     },
-    handDetail(){
-      console.log(11)
-      this.$router.push('/goodsSearch')
+    handDetail() {
+      console.log(11);
+      this.$router.push("/goodsSearch");
     }
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import '/index.scss';
+@import "/index.scss";
 </style>

@@ -1,34 +1,32 @@
-import { getFirstList } from "@/service/index";
+import { getFirstList, getTopLists } from "@/service/index";
 
 export default {
   namespaced: true,
   state: {
     getList: {},
-    channels: [],
-    brandList: [],
-    newGoodsList: [],
-    hotGoodsList: [],
-    swiperSlides: [],
-    topicList: []
+    getTop: {}
   },
   mutations: {
-    getBanner(state: any, payload: any) {
-      // state.getList = payload;
-      state.swiperSlides=payload.banner;
-      state.channels=payload.channels;
-      state.brandList=payload.brandList;
-      state.newGoodsList=payload.newGoodsList;
-      state.hotGoodsList=payload.hotGoodsList;
-      state.topicList=payload.topicList;
-
+    getBanner(state: { getList: any }, payload: any) {
+      state.getList = payload;
+    },
+    getTopLists(state: { getTop: any }, payload: any) {
+      state.getTop = payload;
     }
   },
   actions: {
     _getFirstList(context: any, payload: any) {
       return new Promise((resolve, reject) => {
         getFirstList().then(res => {
-          console.log(res.data);
           context.commit("getBanner", res.data.data);
+        });
+        resolve();
+      });
+    },
+    _getTopLists(context: any, payload: any) {
+      return new Promise((resolve, reject) => {
+        getTopLists().then(res => {
+          context.commit("getTopLists", res.data.data);
         });
         resolve();
       });

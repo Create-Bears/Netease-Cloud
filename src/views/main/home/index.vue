@@ -8,7 +8,12 @@
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
       <div class="channe">
-        <div class="channe-item" v-for="(item, index) in channels" :key="index">
+        <div
+          class="channe-item"
+          v-for="(item, index) in channels"
+          :key="index"
+          @click="jumpCategorys"
+        >
           <span>
             <img v-lazy="item.icon_url" alt="" />
           </span>
@@ -80,6 +85,10 @@
                 <span class="names">{{ itm.name }}</span>
                 <span class="price">{{ itm.retail_price }}元起</span>
               </div>
+              <div class="last">
+                <span>更多{{ item.name }}好物</span>
+                <span><img src="@/static/images/back.png" alt=""/></span>
+              </div>
             </div>
           </div>
         </div>
@@ -118,6 +127,13 @@ export default {
   },
   created() {
     this.$store.dispatch("main/_getFirstList");
+  },
+  methods: {
+    jumpCategorys() {
+      this.$router.push("/categorys");
+      // eslint-disable-next-line no-console
+      console.log(this.$router);
+    }
   },
   mounted() {
     this.swiperSlides = this.$store.state.main.getList.banner;

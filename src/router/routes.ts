@@ -9,12 +9,18 @@ const Home = () =>
 
 const Special = () =>
   import(/* webpackChunkName: "special" */ "@/views/main/special/index.vue");
+
 const Classify = () =>
   import(/* webpackChunkName: "classify" */ "@/views/main/classify/index.vue");
+
 const Shopcar = () =>
   import(/* webpackChunkName: "shopcar" */ "@/views/main/shopcar/index.vue");
+
 const Mine = () =>
   import(/* webpackChunkName: "mine" */ "@/views/main/mine/index.vue");
+
+const Categorys = () =>
+  import(/* webpackChunkName: "categorys" */ "@/views/categorys/index.vue");
 
 export default [
   {
@@ -59,8 +65,13 @@ export default [
     ]
   },
   {
-    path:'/goodsSearch',
-    name:'goodsSearch',
-    component:()=>import('@/views/goodsSearch/index.vue')
+    path: "/categorys",
+    name: "categorys",
+    component: Categorys
+  },
+  {
+    path: "/goodsSearch",
+    name: "goodsSearch",
+    component: () => import("@/views/goodsSearch/index.vue")
   }
 ];

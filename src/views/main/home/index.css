@@ -281,3 +281,27 @@
   font-size: 0.15rem;
   color: darkred;
 }
+
+.smallFive .bigWrapper .last {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.smallFive .bigWrapper .last span:nth-child(1) {
+  width: 100%;
+  margin: 55% 0 0 0;
+  text-align: center;
+}
+
+.smallFive .bigWrapper .last span:nth-child(2) {
+  width: 100%;
+  text-align: center;
+  margin: -5% 0 0 0;
+}
+
+.smallFive .bigWrapper .last span:nth-child(2) img {
+  padding: 0.2rem;
+  height: 0.7rem;
+  width: 0.7rem;
+}

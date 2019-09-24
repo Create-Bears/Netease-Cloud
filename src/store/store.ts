@@ -4,6 +4,7 @@ import login from './modules/login'
 import classify from './modules/classify'
 import search from './modules/search'
 import main from "./modules/main";
+import detail from './modules/detail'
 
 Vue.use(Vuex);
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     login,
     classify,
     search,
-    main
+    main,
+    detail
   }
 });

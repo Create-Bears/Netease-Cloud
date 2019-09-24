@@ -1,0 +1,25 @@
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+%juzhong{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header{
+  height: 0.5rem;
+  display: flex;
+  .header-left{
+    flex: 1;
+    font-size: 0.20rem;
+    @extend %juzhong;
+  }
+  .header-right{
+    flex: 9;
+    font-size: 0.16rem;
+    @extend %juzhong;
+  }
+}

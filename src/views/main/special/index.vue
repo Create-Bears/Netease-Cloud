@@ -14,20 +14,16 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import "./index.scss";
 export default {
   name: "Special",
-  data() {
-    return {
-      getTop: []
-    };
-  },
   created() {
     this.$store.dispatch("main/_getTopLists");
   },
-  mounted() {
-    this.getTop = this.$store.state.main.getTop.data;
-  }
+  computed:mapState({
+    getTop:store=>store.main.getTop.data
+  }),
 };
 </script>
 

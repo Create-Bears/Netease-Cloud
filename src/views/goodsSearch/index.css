@@ -5,14 +5,14 @@
   flex-direction: column;
 }
 
-.header, .header .header-left, .header .header-mid {
+.header, .header .header-left, .header .header-mid, .header .header-right, .chooseList .chooseList-top div li {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .header {
-  height: 0.44rem;
+  height: 0.5rem;
   display: flex;
 }
 
@@ -23,11 +23,13 @@
 
 .header .header-mid {
   flex: 8;
-  height: 100%;
+  background: #f5f5f9;
+  height: 80%;
 }
 
 .header .header-mid input {
-  height: 85%;
+  margin-left: 0.05rem;
+  height: 80%;
   width: 90%;
   background: #f5f5f9;
   border: none;
@@ -52,13 +54,147 @@
 
 .hotSearch div span {
   display: inline-block;
-  padding: 0.1rem;
+  padding: 0.08rem;
   border: 1px solid #ccc;
-  border-radius: 0.05rem;
+  border-radius: 0.08rem;
   margin: 0.1rem 0 0 0.1rem;
 }
 
 .hotSearch div .active {
   color: red;
   border: 1px solid red;
+}
+
+.historySearch {
+  padding-bottom: 0.1rem;
+  border-bottom: 0.03rem solid #f5f5f9;
+}
+
+.historySearch p {
+  height: 0.35rem;
+  padding-left: 0.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.historySearch p span:nth-child(1) {
+  flex: 2;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.historySearch p span:nth-child(2) {
+  flex: 1;
+  padding-right: 0.2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.historySearch div span {
+  display: inline-block;
+  padding: 0.08rem;
+  border: 1px solid #ccc;
+  border-radius: 0.08rem;
+  margin: 0.1rem 0 0 0.1rem;
+}
+
+.searchList {
+  position: absolute;
+  top: 0.5rem;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f9;
+  z-index: 99;
+}
+
+.searchList .searchList-con {
+  background-color: #fff;
+  padding: 0.1rem;
+}
+
+.searchList .searchList-con li {
+  padding: 0.1rem;
+}
+
+.searchList .searchList-con li {
+  position: relative;
+}
+
+.searchList .searchList-con li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: #ccc;
+  transform: scaleX(1);
+}
+
+.chooseList {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f9;
+}
+
+.chooseList .chooseList-top {
+  position: relative;
+}
+
+.chooseList .chooseList-top ul {
+  display: flex;
+  background-color: #fff;
+  justify-content: space-around;
+  height: 0.35rem;
+  align-items: center;
+  border-bottom: 3px solid #f5f5f9;
+  border-top: 3px solid #f5f5f9;
+}
+
+.chooseList .chooseList-top ul .active {
+  color: red;
+}
+
+.chooseList .chooseList-top div {
+  width: 100%;
+  position: absolute;
+  height: 0.6rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-bottom: 2px solid #ccc;
+}
+
+.chooseList .chooseList-top div li {
+  height: 0.4rem;
+  padding: .05rem .15rem;
+  border-radius: 0.05rem;
+  border: 1px solid #ccc;
+  margin-left: 0.05rem;
+}
+
+.chooseList .chooseList-top div .active {
+  border-color: red;
+  color: red;
+}
+
+.chooseList .chooseList-bottom {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chooseList .chooseList-bottom dl {
+  width: 50%;
+  background-color: #fff;
+  text-align: center;
+}
+
+.chooseList .chooseList-bottom dl dd {
+  line-height: 0.3rem;
+}
+
+.chooseList .chooseList-bottom dl dd p:nth-child(2) {
+  color: red;
 }

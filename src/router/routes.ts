@@ -19,6 +19,8 @@ const Shopcar = () =>
 const Mine = () =>
   import(/* webpackChunkName: "mine" */ "@/views/main/mine/index.vue");
 
+const goodsSearch=()=>
+ import(/* webpackChunkName: "goodsearch" */ '@/views/goodsSearch/index.vue')
 const Categorys = () =>
   import(/* webpackChunkName: "categorys" */ "@/views/categorys/index.vue");
 
@@ -65,7 +67,12 @@ export default [
     ]
   },
   {
-    path: "/categorys/:id?",
+    path:'/productDetail/:id',
+    name:'productDetail',
+    component:()=>import('@/views/pDetail/index.vue')
+  },{
+
+    path: "/categorys/:id",
     name: "categorys",
     component: Categorys
   },

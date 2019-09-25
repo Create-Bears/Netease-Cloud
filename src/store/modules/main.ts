@@ -29,21 +29,13 @@ export default {
     }
   },
   actions: {
-    _getFirstList(context: any, payload: any) {
-      return new Promise((resolve, reject) => {
-        getFirstList().then(res => {
-          context.commit("getBanner", res.data.data);
-        });
-        resolve();
-      });
+    async _getFirstList({ commit }: any, payload: any) {
+      let result = await getFirstList();
+      commit("getBanner", result.data.data);
     },
-    _getTopLists(context: any, payload: any) {
-      return new Promise((resolve, reject) => {
-        getTopLists().then(res => {
-          context.commit("getTopLists", res.data.data);
-        });
-        resolve();
-      });
+    async _getTopLists({ commit }: any, payload: any) {
+      let result = await getTopLists();
+      commit("getTopLists", result.data.data);
     }
   }
 };

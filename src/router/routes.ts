@@ -71,7 +71,8 @@ export default [
     name:'productDetail',
     component:()=>import('@/views/pDetail/index.vue')
   },{
-    path: "/categorys",
+
+    path: "/categorys/:id",
     name: "categorys",
     component: Categorys
   },

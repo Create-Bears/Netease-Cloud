@@ -12,7 +12,7 @@
           class="channe-item"
           v-for="(item, index) in channels"
           :key="index"
-          @click="jumpCategorys"
+          @click="jumpCategorys(item.id)"
         >
           <span>
             <img v-lazy="item.icon_url" alt="" />
@@ -133,8 +133,10 @@ export default {
     categoryList:store=>store.main.categoryList,
   }),
   methods: {
-    jumpCategorys() {
-      this.$router.push("/categorys");
+    jumpCategorys(id) {
+      // eslint-disable-next-line no-console
+      console.log(id);
+      this.$router.push({ path: "/categorys/", query: { id } });
       // eslint-disable-next-line no-console
       console.log(this.$router);
     }

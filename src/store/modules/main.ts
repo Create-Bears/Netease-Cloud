@@ -4,13 +4,27 @@ export default {
   namespaced: true,
   state: {
     getList: {},
-    getTop: {}
+    getTop: {},
+    channels: [],
+    brandList: [],
+    newGoodsList: [],
+    hotGoodsList: [],
+    categoryList: [],
+    swiperSlides: [],
   },
   mutations: {
-    getBanner(state: { getList: any }, payload: any) {
+    getBanner(state :any , payload: any) {
       state.getList = payload;
+      state.channels=payload.channel;
+      state.swiperSlides=payload.banner;
+      state.brandList=payload.brandList;
+      state.newGoodsList=payload.newGoodsList;
+      state.hotGoodsList=payload.hotGoodsList;
+      state.topicList=payload.topicList;
+      state.categoryList=payload.categoryList;
     },
-    getTopLists(state: { getTop: any }, payload: any) {
+    getTopLists(state:any, payload: any) {
+      console.log(payload)
       state.getTop = payload;
     }
   },

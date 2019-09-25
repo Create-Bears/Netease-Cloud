@@ -112,18 +112,12 @@ export default {
   },
   data() {
     return {
-      channels: [],
-      brandList: [],
-      newGoodsList: [],
-      hotGoodsList: [],
-      categoryList: [],
       swiperOption: {
         autoplay: true,
         pagination: {
           el: ".swiper-pagination"
         }
       },
-      swiperSlides: []
     };
   },
   created() {
@@ -136,6 +130,7 @@ export default {
     newGoodsList:store=>store.main.newGoodsList,
     hotGoodsList:store=>store.main.hotGoodsList,
     topicList:store=>store.main.topicList,
+    categoryList:store=>store.main.categoryList,
   }),
   methods: {
     jumpCategorys() {
@@ -144,16 +139,6 @@ export default {
       console.log(this.$router);
     }
   },
-  mounted() {
-    this.swiperSlides = this.$store.state.main.getList.banner;
-    this.channels = this.$store.state.main.getList.channel;
-    this.brandList = this.$store.state.main.getList.brandList;
-    this.newGoodsList = this.$store.state.main.getList.newGoodsList;
-    this.hotGoodsList = this.$store.state.main.getList.hotGoodsList;
-    this.categoryList = this.$store.state.main.getList.categoryList;
-    // eslint-disable-next-line no-console
-    console.log(this.$store.state.main);
-  }
 };
 </script>
 

@@ -14,12 +14,17 @@
 
 <script>
 import BScroll from "better-scroll";
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   name: "Scroll",
-  computed:mapState({
-    topicList:store=>store.main.topicList,
-  }),
+  computed: {
+    ...mapState({
+      topicList: state => state.main.topicList
+    })
+  },
+  created() {
+    this.$store.dispatch("main/_getFirstList");
+  },
   mounted() {
     this.initScroller();
   },

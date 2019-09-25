@@ -99,7 +99,7 @@
 
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 import scroll from "@/components/scroll.vue";
 import "swiper/dist/css/swiper.css";
 import "./index.scss";
@@ -117,30 +117,26 @@ export default {
         pagination: {
           el: ".swiper-pagination"
         }
-      },
+      }
     };
   },
   created() {
     this.$store.dispatch("main/_getFirstList");
   },
   computed: mapState({
-    swiperSlides:store=>store.main.swiperSlides,
-    channels:store=>store.main.channels,
-    brandList:store=>store.main.brandList,
-    newGoodsList:store=>store.main.newGoodsList,
-    hotGoodsList:store=>store.main.hotGoodsList,
-    topicList:store=>store.main.topicList,
-    categoryList:store=>store.main.categoryList,
+    swiperSlides: store => store.main.swiperSlides,
+    channels: store => store.main.channels,
+    brandList: store => store.main.brandList,
+    newGoodsList: store => store.main.newGoodsList,
+    hotGoodsList: store => store.main.hotGoodsList,
+    topicList: store => store.main.topicList,
+    categoryList: store => store.main.categoryList
   }),
   methods: {
     jumpCategorys(id) {
-      // eslint-disable-next-line no-console
-      console.log(id);
       this.$router.push({ path: "/categorys/", query: { id } });
-      // eslint-disable-next-line no-console
-      console.log(this.$router);
     }
-  },
+  }
 };
 </script>
 

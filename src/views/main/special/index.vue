@@ -14,16 +14,19 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 import "./index.scss";
 export default {
   name: "Special",
   created() {
-    this.$store.dispatch("main/_getTopLists");
+    this.$store.dispatch("main/_getTopLists", {
+      page: 1,
+      size: 100
+    });
   },
-  computed:mapState({
-    getTop:store=>store.main.getTop.data
-  }),
+  computed: mapState({
+    getTop: store => store.main.getTop.data
+  })
 };
 </script>
 

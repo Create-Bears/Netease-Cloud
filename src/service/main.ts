@@ -7,7 +7,7 @@ export const getFirstList = () => {
 };
 
 //获取专题数据
-export const getTopLists=()=>{
-    const url='/topic/list';
-    return request.get(url)
-}
+export const getTopLists = (params: any) => {
+  const url = "/topic/list";
+  return request.get(url, { params });
+};

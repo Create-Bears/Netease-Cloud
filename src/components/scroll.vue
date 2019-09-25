@@ -14,19 +14,18 @@
 
 <script>
 import BScroll from "better-scroll";
-
+import { mapState } from "vuex";
 export default {
   name: "Scroll",
+  computed: {
+    ...mapState({
+      topicList: state => state.main.topicList
+    })
+  },
   created() {
     this.$store.dispatch("main/_getFirstList");
   },
-  data() {
-    return {
-      topicList: []
-    };
-  },
   mounted() {
-    this.topicList = this.$store.state.main.getList.topicList;
     this.initScroller();
   },
   methods: {

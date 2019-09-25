@@ -5,7 +5,7 @@
 </template>
 
 <style>
-@import '~@/assets/font_ceguai1zc1/iconfont.css';
+@import "~@/assets/font_ceguai1zc1/iconfont.css";
 
 * {
   margin: 0;
@@ -24,7 +24,7 @@ html,
 html {
   font-size: calc(100 / 375 * 100vw);
 }
-.container{
+.container {
   font-size: 14px;
 }
 </style>

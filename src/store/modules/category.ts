@@ -3,11 +3,12 @@ import { getCategoryList } from "@/service/index";
 export default {
   namespaced: true,
   state: {
-    categorys: {}
+    navLink: []
   },
   mutations: {
-    getCategory(state: { categorys: any }, payload: any) {
-      state.categorys = payload;
+    getCategory(state: any, payload: any) {
+      console.log(payload);
+      state.navLink = payload.brotherCategory;
     }
   },
   actions: {

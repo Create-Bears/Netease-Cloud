@@ -6,7 +6,7 @@
       <div></div>
     </header>
     <nav class="nav">
-      <div v-for="(item, index) in navList" :key="index">
+      <div v-for="(item, index) in navLink" :key="index">
         <span>{{ item.name }}</span>
       </div>
     </nav>
@@ -15,21 +15,16 @@
 </template>
 
 <script>
-import "./index.scss";
+import { mapState } from "vuex";
 export default {
   name: "category",
-  data() {
-    return {
-      navList: []
-    };
+  computed: {
+    ...mapState({
+      navLink: state => state.category.navLink
+    })
   },
   created() {
     this.$store.dispatch("category/_getCategoryList", this.$route.query.id);
-  },
-  mounted() {
-    this.navList = this.$store.state.category.categorys.brotherCategory;
-    // eslint-disable-next-line no-console
-    console.log(this.$store.state.category.categorys);
   }
 };
 </script>

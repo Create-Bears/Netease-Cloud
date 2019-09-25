@@ -108,21 +108,24 @@
         <span>☆</span>
       </div>
       <div class="cartNum">
-        <span class="iconfont">&#xf0179;</span>
+        
+        <span class="iconfont" @click="handShopcarDetail">&#xf0179;</span>
+        <p>{{goodsCount}}</p>
       </div>
-      <div class="addCart" @click="handShopcar">加入购物车</div>
+      <div class="addCart" @click="()=>{
+        this.dialogShow=true
+        }">加入购物车</div>
       <div class="payGoods">立即购买</div>
     </footer>
-     <AddShopDialog v-show="dialogShow" @listenDialog="handDialog"/>
+    <AddShopDialog v-show="dialogShow" @listenDialog="handDialog" />
   </div>
- 
 </template>
 <script>
 import { mapState } from "vuex";
 import Item from "@/components/item";
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-import AddShopDialog from '@/components/addShopDialog'
+import AddShopDialog from "@/components/addShopDialog";
 export default {
   data() {
     return {
@@ -141,7 +144,7 @@ export default {
         },
         mousewheelControl: true
       },
-      dialogShow:false,
+      dialogShow: false
     };
   },
   computed: mapState({
@@ -152,12 +155,14 @@ export default {
     commentData: store => store.detail.commentData,
     attribute: store => store.detail.attribute,
     issue: store => store.detail.issue,
-    productList: store => store.detail.productList
+    productList: store => store.detail.productList,
+    goodsCount:store=>store.shopcar.goodsCount
   }),
   mounted() {
     let id = this.$route.params.id;
     this.$store.dispatch("detail/_getDetailList", id);
     this.$store.dispatch("detail/_goodsListData", id);
+     this.$store.dispatch('shopcar/_cartCount')
   },
   methods: {
     //进入详情页面
@@ -167,20 +172,23 @@ export default {
       this.$store.dispatch("detail/_getCommentList", {
         valueId: id,
         typeId: 0,
-        page:1,
-        size:100
+        page: 1,
+        size: 100
       });
     },
-    //弹出框的显示
-    handDialogShow(){
-      this.dialogShow=true
+    handShopcarDetail() {
+      this.$router.push('/main/shopcar')
     },
-    handDialog(flag){
-      this.dialogShow=flag
+    //弹出框的显示
+    handDialogShow() {
+      this.dialogShow = true;
+    },
+    handDialog(flag) {
+      this.dialogShow = flag;
     },
     //点击进入购物车页面
-    handShopcar(){
-       this.$router.push('/main/shopcar')  
+    handShopcar() {
+      this.$router.push("/main/shopcar");
     }
   },
   components: {

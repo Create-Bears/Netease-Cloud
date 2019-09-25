@@ -14,6 +14,7 @@ export default {
     commentList:[],
     specificationList:[],
     goodsCount:0,
+    product:[],
   },
   mutations: {
     setDetailList(state:any,payload:any){
@@ -24,7 +25,8 @@ export default {
       state.commentData=payload.comment.data;
       state.attribute=payload.attribute;
       state.issue=payload.issue;
-      state.specificationList=payload.specificationList
+      state.specificationList=payload.specificationList;
+      state.product=payload.productList;
     },
     setPriductList(state:any,payload:any){
       state.productList=payload;

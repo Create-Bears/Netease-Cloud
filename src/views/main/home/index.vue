@@ -3,7 +3,7 @@
     <div class="main-container">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item, index) in swiperSlides" :key="index">
-          <img width="100%" v-lazy="item.image_url" alt="" />
+          <img width="100%" v-lazy="item.image_url" alt />
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
@@ -15,7 +15,7 @@
           @click="jumpCategorys(item.id)"
         >
           <span>
-            <img v-lazy="item.icon_url" alt="" />
+            <img v-lazy="item.icon_url" alt />
           </span>
           <span>{{ item.name }}</span>
         </div>
@@ -26,9 +26,17 @@
             <h3>品牌制造商直供</h3>
           </div>
           <div class="content">
-            <div v-for="(item, index) in brandList" :key="index">
+            <div
+              v-for="(item, index) in brandList"
+              :key="index"
+              @click="()=>{
+              $router.push(`/homeDetail/${item.id}`)
+              }"
+            >
               <span class="names">{{ item.name }}</span>
-              <span><img v-lazy="item.new_pic_url" alt=""/></span>
+              <span>
+                <img v-lazy="item.new_pic_url" alt />
+              </span>
               <span class="price">{{ item.floor_price }}元起</span>
             </div>
           </div>
@@ -38,10 +46,14 @@
             <h3>新品首发</h3>
           </div>
           <div class="content">
-            <div v-for="(item, index) in newGoodsList" :key="index">
-              <span><img v-lazy="item.list_pic_url" alt=""/></span>
-              <span class="names">{{ item.name }}</span>
-              <span class="price">{{ item.retail_price }}元起</span>
+            <div
+              v-for="(item, index) in newGoodsList"
+              :key="index"
+              @click="()=>{
+               $router.push(`/productDetail/${item.id}`)
+              }"
+            >
+              <Item :Item="item" />
             </div>
           </div>
         </div>
@@ -50,9 +62,17 @@
             <h3>人气推荐</h3>
           </div>
           <div class="content">
-            <div v-for="(item, index) in hotGoodsList" :key="index">
+            <div
+              v-for="(item, index) in hotGoodsList"
+              :key="index"
+              @click="()=>{
+               $router.push(`/productDetail/${item.id}`)
+              }"
+            >
               <div class="imgs">
-                <span><img v-lazy="item.list_pic_url" alt=""/></span>
+                <span>
+                  <img v-lazy="item.list_pic_url" alt />
+                </span>
               </div>
               <div class="fonts">
                 <span class="names">{{ item.name }}</span>
@@ -71,23 +91,30 @@
           </div>
         </div>
         <div class="smallFive">
-          <div
-            class="bigWrapper"
-            v-for="(item, index) in categoryList"
-            :key="index"
-          >
+          <div class="bigWrapper" v-for="(item, index) in categoryList" :key="index">
             <div class="title">
               <h3>{{ item.name }}</h3>
             </div>
             <div class="content">
-              <div v-for="(itm, index) in item.goodsList" :key="index">
-                <span><img v-lazy="itm.list_pic_url" alt=""/></span>
+              <div
+                v-for="(itm, index) in item.goodsList"
+                :key="index"
+                @click="()=>{
+               $router.push(`/productDetail/${itm.id}`)
+              }"
+              >
+                <Item :Item="itm" />
+                <!-- <span>
+                  <img v-lazy="itm.list_pic_url" alt />
+                </span>
                 <span class="names">{{ itm.name }}</span>
-                <span class="price">{{ itm.retail_price }}元起</span>
+                <span class="price">{{ itm.retail_price }}元起</span>-->
               </div>
               <div class="last">
                 <span>更多{{ item.name }}好物</span>
-                <span><img src="@/static/images/back.png" alt=""/></span>
+                <span>
+                  <img src="@/static/images/back.png" alt />
+                </span>
               </div>
             </div>
           </div>
@@ -98,6 +125,7 @@
 </template>
 
 <script>
+import Item from "@/components/item";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import { mapState } from "vuex";
 import scroll from "@/components/scroll.vue";
@@ -108,7 +136,8 @@ export default {
   components: {
     swiper,
     swiperSlide,
-    scroll
+    scroll,
+    Item
   },
   data() {
     return {

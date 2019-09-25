@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header class="header">
-      <div></div>
+      <div @click="()=>{this.$router.go(-1)}">&lt;</div>
       <div>奇趣分类</div>
       <div></div>
     </header>

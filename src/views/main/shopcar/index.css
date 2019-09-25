@@ -4,10 +4,6 @@
   align-items: center;
 }
 
-.content {
-  background-color: #f4f4f4 !important;
-}
-
 .content .swiper-bottom {
   display: flex;
   height: 0.4rem;

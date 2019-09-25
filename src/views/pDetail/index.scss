@@ -219,6 +219,7 @@
 	.cartNum {
 		width: 20%;
 		height: 100%;
+		display: flex;
 		span {
 			display: flex;
 			justify-content: center;
@@ -227,6 +228,10 @@
 			line-height: 0.49rem;
 			font-size: 0.3rem;
 			text-align: center;
+		}
+		p{
+			color: red;
+			font-weight: 800;
 		}
 	}
 	.addCart {

@@ -26,7 +26,7 @@
           </div>
           <div class="right-title">-- {{ tabCurrentList.name }}分类 --</div>
           <div class="right-listData">
-            <dl v-for="item in tabCurrentList.subCategoryList" :key="item.id">
+            <dl v-for="item in tabCurrentList.subCategoryList" :key="item.id" @click="handClickDetail(item.id)">
               <dt>
                 <img :src="item.wap_banner_url" alt="" />
               </dt>
@@ -64,6 +64,10 @@ export default {
     handDetail() {
       console.log(11);
       this.$router.push("/goodsSearch");
+    },
+    handClickDetail(id){
+      console.log(id)
+      this.$router.push({ path: "/categorys/", query: { id } });
     }
   }
 };

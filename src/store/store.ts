@@ -4,9 +4,12 @@ import login from "./modules/login";
 import classify from "./modules/classify";
 import search from "./modules/search";
 import main from "./modules/main";
-import detail from './modules/detail'
+import detail from './modules/detail';
 import category from "./modules/category";
-import shopcar from './modules/shopcar'
+import shopcar from './modules/shopcar';
+import address from './modules/address'
+import homeDetail from './modules/homeDetail'
+import topList from './modules/topList'
 
 Vue.use(Vuex);
 
@@ -18,6 +21,9 @@ export default new Vuex.Store({
     main,
     detail,
     category,
-    shopcar
+    shopcar,
+    address,
+    homeDetail,
+    topList
   }
 });

@@ -58,7 +58,8 @@ export default {
   computed: mapState({
     info: store => store.detail.info,
     specificationList: store => store.detail.specificationList,
-    goodsCount: store => store.detail.goodsCount
+    goodsCount: store => store.detail.goodsCount,
+    product:store=>store.detail.product
   }),
   methods: {
     handDialog() {
@@ -71,11 +72,11 @@ export default {
       this.$store.commit("detail/addNum");
     },
     handAddShopcar(){
-      // this.$router.push('/main/shopcar')
+      alert('添加成功')
       this.$store.dispatch('shopcar/_addCartList',{
         goodsId:this.info.id,
         number:this.goodsCount,
-        productId:1
+        productId:this.product[0].id
       })
     }
   }

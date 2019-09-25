@@ -1,0 +1,55 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header .header-left, .header .header-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  height: 0.5rem;
+  display: flex;
+}
+
+.header .header-left {
+  flex: 1;
+  font-size: 0.2rem;
+}
+
+.header .header-right {
+  flex: 9;
+  font-size: 0.16rem;
+}
+
+.main {
+  flex: 1;
+  overflow: auto;
+}
+
+.main .content {
+  background-color: #fff !important;
+}
+
+.main .content .commentList {
+  padding: 0.1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.main .content .commentList .commentItem .userInfo {
+  height: 0.3rem;
+  line-height: 0.3rem;
+  font-size: 0.12rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main .content .commentList .commentItem .userComment {
+  line-height: 0.3rem;
+  font-size: 0.15rem;
+}

@@ -17,3 +17,10 @@ export let goodsListData=(id:any)=>{
     }
   })
 }
+
+export let getCommentList =(params:any)=>{
+  let url='/comment/list';
+  return request.get(url,{
+    params
+  })
+}

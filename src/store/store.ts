@@ -6,6 +6,7 @@ import search from "./modules/search";
 import main from "./modules/main";
 import detail from './modules/detail'
 import category from "./modules/category";
+import shopcar from './modules/shopcar'
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     search,
     main,
     detail,
-    category
+    category,
+    shopcar
   }
 });

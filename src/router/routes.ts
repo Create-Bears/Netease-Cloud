@@ -80,5 +80,10 @@ export default [
     path: "/goodsSearch",
     name: "goodsSearch",
     component: () => import("@/views/goodsSearch/index.vue")
+  },
+  {
+    path:'/commentDetail/:id',
+    name: "commentDetail",
+    component: () => import("@/views/commentDetail/index.vue")
   }
 ];

@@ -1,18 +1,24 @@
-import {getShopcarList,addCartList} from '@/service'
+import {getShopcarList,addCartList,cartCount} from '@/service'
 
 export default {
   namespaced:true,
   state:{
     shopcarList:[],
     cartTotal:[],
+    goodsCount:0,
   },
   mutations:{
     setshopcarList(state:any,payload:any){
       state.shopcarList=payload.cartList;
-      state.cartTotal=payload.cartTotal
+      state.cartTotal=payload.cartTotal;
+    },
+    setGoodsCount(state:any,payload:any){
+      console.log(payload)
+      state.goodsCount=payload.cartTotal.goodsCount;
     }
   },
   actions:{
+    //获取购物车的数据
     async _getShopcarList({commit}:any,payload:any){
       let result = await getShopcarList();
       console.log(result)
@@ -21,6 +27,11 @@ export default {
     async _addCartList({commit}:any,payload:any){
       let result = await addCartList(payload);
       console.log(result)
+    },
+    //获取购物车的总数量
+    async _cartCount({commit}:any){
+      let result = await cartCount();
+      commit('setGoodsCount',result.data.data)
     }
   }
 }

@@ -82,8 +82,22 @@ export default [
     component: () => import("@/views/goodsSearch/index.vue")
   },
   {
+    path: "/address",
+    name: "address",
+    component: () => import("@/views/address/index.vue")
+  },
+  {
     path:'/commentDetail/:id',
     name: "commentDetail",
     component: () => import("@/views/commentDetail/index.vue")
+  },
+  {
+    path:'/homeDetail/:id',
+    name:'homeDetail',
+    component:()=>import("@/views/homeDetail/index.vue")
+  },{
+    path:'/topListDetaild/:id',
+    name:'topListDetaild',
+    component:()=>import('@/views/topListDetail/index.vue')
   }
 ];

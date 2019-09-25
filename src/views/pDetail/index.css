@@ -252,6 +252,7 @@
 .footer .cartNum {
   width: 20%;
   height: 100%;
+  display: flex;
 }
 
 .footer .cartNum span {
@@ -262,6 +263,11 @@
   line-height: 0.49rem;
   font-size: 0.3rem;
   text-align: center;
+}
+
+.footer .cartNum p {
+  color: red;
+  font-weight: 800;
 }
 
 .footer .addCart {

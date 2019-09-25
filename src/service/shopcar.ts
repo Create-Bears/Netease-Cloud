@@ -10,3 +10,8 @@ export let addCartList = (params: any) => {
   let url = '/cart/add';
   return request.post(url, params)
 }
+
+export let cartCount =()=>{
+  let url='/cart/goodscount';
+  return request.get(url);
+}

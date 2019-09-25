@@ -1,7 +1,7 @@
 <template>
   <dl>
     <dt>
-      <img :src="Item.list_pic_url" alt="">
+      <img v-lazy="Item.list_pic_url" alt="">
     </dt>
     <dd>
       <p>{{Item.name}}</p>

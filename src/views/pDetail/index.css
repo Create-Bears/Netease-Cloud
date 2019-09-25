@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 
-.header .header-left, .header .header-right, .main .content .swiperCon .swiper-bottom p, .main .content .goodsSize div:nth-child(1), .main .content .goodsSize div:nth-child(2), .main .content .goodsSize div:nth-child(3), .main .content .goodsAttribute .goodsAttributeItem div:nth-child(1) {
+.header .header-left, .header .header-right, .main .content .swiperCon .swiper-bottom p, .main .content .goodsSize div:nth-child(1), .main .content .goodsSize div:nth-child(2), .main .content .goodsSize div:nth-child(3), .main .content .goodsAttribute .goodsAttributeItem div:nth-child(1), .goodsDoWrap div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -282,4 +282,137 @@
   text-align: center;
   font-size: 0.15rem;
   color: white;
+}
+
+.am-modal-content {
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  background-clip: padding-box;
+}
+
+.am-modal-content .am-modal-body {
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  font-size: 15px;
+  color: #888;
+  line-height: 1.5;
+}
+
+.am-modal-content .am-modal-body .goodsSizeDo {
+  padding: 0.3rem 0.1rem;
+  background: white;
+}
+
+.goodsSizeDo .goodsSizeSetMsg {
+  display: flex;
+}
+
+.goodsSizeDo .goodsSizeSetMsg div:nth-child(1) {
+  flex: 3;
+}
+
+.goodsSizeDo .goodsSizeSetMsg div:nth-child(1) img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.goodsSizeDo .goodsSizeSetMsg div:nth-child(2) {
+  flex: 6;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.goodsSizeDo .goodsSizeSetMsg div:nth-child(2) p {
+  width: 100%;
+  line-height: 0.3rem;
+  color: #888;
+}
+
+.goodsSizeDo .goodsSizeSetMsg div:nth-child(2) p span {
+  color: red;
+  margin-left: 0.1rem;
+}
+
+.goodsSizeDo .goodsSizeSetMsg div:nth-child(3) {
+  flex: 1;
+  text-align: center;
+}
+
+.goodsSizeDo .goodsSizeSetMsg div:nth-child(3) span {
+  display: inline-block;
+  width: 0.16rem;
+  height: 0.16rem;
+  border: 1px solid red;
+  text-align: center;
+  line-height: 0.16rem;
+  color: red;
+  font-size: 12px;
+}
+
+.goodsSizeWrap .goodsSizeItemName {
+  text-align: left;
+  color: black;
+  padding: 0.05rem 0;
+}
+
+.goodsSizeWrap .goodsSizeListWrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.goodsSizeWrap .goodsSizeListWrap .goodsSizeListItem {
+  font-size: 0.15rem;
+  padding: 0.025rem 0.05rem;
+  margin-right: 0.05rem;
+  border: 1px solid gray;
+  margin-top: 0.05rem;
+}
+
+.goodsSizeWrap .goodsSizeListWrap .active {
+  font-size: 0.15rem;
+  padding: 0.025rem 0.05rem;
+  margin-right: 0.05rem;
+  border: 1px solid gray;
+  margin-top: 0.05rem;
+  border-color: #2196f3;
+  color: #2196f3;
+}
+
+.goodsSizeWrap .goodsSizeListWrap .goodsBuyCount span {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.4rem;
+  text-align: center;
+  line-height: 0.4rem;
+  border: 1px solid #ccc;
+}
+
+.goodsDoWrap {
+  height: 0.5rem;
+  display: flex;
+}
+
+.goodsDoWrap div {
+  flex: 5;
+}
+
+.goodsDoWrap div:nth-child(1) {
+  background: linear-gradient(90deg, #ff9500, #ff5e3a);
+  color: white;
+  line-height: 0.5rem;
+}
+
+.goodsDoWrap div:nth-child(2) {
+  background: linear-gradient(90deg, #1d62f0, #19d5fd);
+  color: white;
+  line-height: 0.5rem;
 }

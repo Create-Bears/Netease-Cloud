@@ -1,0 +1,51 @@
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+%juzhong{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header {
+	height: 0.5rem;
+	display: flex;
+	.header-left {
+		flex: 1;
+		font-size: 0.2rem;
+		@extend %juzhong;
+	}
+	.header-right {
+		flex: 9;
+		font-size: 0.16rem;
+		@extend %juzhong;
+	}
+}
+.main {
+	flex: 1;
+  overflow: auto;
+  .content{
+    background-color: #fff!important;
+  	.commentList {
+      padding: 0.1rem;
+      border-bottom: 1px solid #ccc;
+      .commentItem {
+        .userInfo {
+          height: 0.3rem;
+          line-height: 0.3rem;
+          font-size: 0.12rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .userComment {
+          line-height: 0.3rem;
+          font-size: 0.15rem;
+        }
+      }
+    }
+  }
+}

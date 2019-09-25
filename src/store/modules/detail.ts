@@ -1,4 +1,4 @@
-import { getDetailList,goodsListData } from '@/service'
+import { getDetailList,goodsListData,getCommentList } from '@/service'
 
 export default {
   namespaced: true,
@@ -11,6 +11,9 @@ export default {
     attribute:[],
     issue:[],
     productList:[],
+    commentList:[],
+    specificationList:[],
+    goodsCount:0,
   },
   mutations: {
     setDetailList(state:any,payload:any){
@@ -21,10 +24,23 @@ export default {
       state.commentData=payload.comment.data;
       state.attribute=payload.attribute;
       state.issue=payload.issue;
+      state.specificationList=payload.specificationList
     },
     setPriductList(state:any,payload:any){
       state.productList=payload;
-    }
+    },
+    setCommentList(state:any,payload:any){
+      state.commentList=payload.data;
+    },
+    reduceNum(state:any,payload:any){
+      if(state.goodsCount<=0){
+        return false
+      }
+      state.goodsCount--;
+    },
+    addNum(state:any,payload:any){
+      state.goodsCount++;
+    },
   },
   actions: {
     async _getDetailList({ commit }: any, payload: any) {
@@ -36,6 +52,11 @@ export default {
       let result =await goodsListData(payload);
       console.log(result);
       commit('setPriductList',result.data.data.goodsList)
+    },
+    async _getCommentList({commit}:any,payload:any){
+      let result = await getCommentList(payload)
+      console.log(result)
+      commit('setCommentList',result.data.data)
     }
   }
 }

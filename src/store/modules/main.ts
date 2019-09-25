@@ -22,9 +22,10 @@ export default {
       state.hotGoodsList=payload.hotGoodsList;
       state.topicList=payload.topicList;
       state.categoryList=payload.categoryList;
+      console.log(payload.topicList)
     },
     getTopLists(state:any, payload: any) {
-      console.log(payload)
+      
       state.getTop = payload;
     }
   },

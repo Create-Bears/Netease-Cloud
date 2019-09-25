@@ -3,6 +3,7 @@ import axios from "axios";
 const instance = axios.create({
   baseURL: 'http://127.0.0.1:8888',
   timeout:1000,
+  headers:{'x-nideshop-token': window.localStorage.getItem('token')}
 });
 
 instance.interceptors.request.use(function (config) {

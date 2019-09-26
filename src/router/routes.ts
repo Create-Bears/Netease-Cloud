@@ -19,11 +19,13 @@ const Shopcar = () =>
 const Mine = () =>
   import(/* webpackChunkName: "mine" */ "@/views/main/mine/index.vue");
 
-const goodsSearch = () =>
+const GoodsSearch = () =>
   import(/* webpackChunkName: "goodsearch" */ "@/views/goodsSearch/index.vue");
+
 const Categorys = () =>
   import(/* webpackChunkName: "categorys" */ "@/views/categorys/index.vue");
 
+const Cs = () => import(/* webpackChunkName: "cs" */ "@/views/cs/index.vue");
 export default [
   {
     path: "/",
@@ -67,6 +69,11 @@ export default [
     ]
   },
   {
+    path: "/cs",
+    name: "cs",
+    component: Cs
+  },
+  {
     path: "/productDetail/:id",
     name: "productDetail",
     component: () => import("@/views/pDetail/index.vue")
@@ -79,7 +86,7 @@ export default [
   {
     path: "/goodsSearch",
     name: "goodsSearch",
-    component: () => import("@/views/goodsSearch/index.vue")
+    component: GoodsSearch
   },
   {
     path: "/address",

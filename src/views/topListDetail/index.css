@@ -1,11 +1,16 @@
 .container {
   width: 100%;
   height: 100%;
+}
+
+.container-con {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.header .header-left, .header .header-mid, .header .header-right {
+.header .header-left, .header .header-mid, .header .header-right, .commentList .moreComment {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,6 +77,13 @@
 .commentList .commentItem .userComment {
   line-height: 0.3rem;
   font-size: 0.15rem;
+  color: gray;
+}
+
+.commentList .moreComment {
+  padding-top: 0.05rem;
+  height: 0.4rem;
+  line-height: .4rem;
 }
 
 .relateTopic {

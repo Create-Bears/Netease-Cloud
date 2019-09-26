@@ -15,10 +15,14 @@
           <div>{{ currentCategory.front_name }}</div>
         </div>
         <div class="goodsList">
-          <div v-for="(itm, index) in goodList" :key="index">
-            <span><img v-lazy="itm.list_pic_url" alt=""/></span>
-            <span class="names">{{ itm.name }}</span>
-            <span class="price">￥{{ itm.retail_price }}元</span>
+          <div
+            v-for="(itm, index) in goodList"
+            :key="index"
+            @click="()=>{
+              $router.push(`/productDetail/${itm.id}`)
+              }"
+          >
+            <Item :item="itm" />
           </div>
         </div>
       </div>
@@ -28,12 +32,14 @@
 
 <script>
 import { mapState } from "vuex";
+import Item from "@/components/item";
 import Scrolls from "@/components/scrolls.vue";
 import "./index.scss";
 export default {
   name: "category",
   components: {
-    Scrolls
+    Scrolls,
+    Item
   },
   computed: {
     ...mapState({

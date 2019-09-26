@@ -30,6 +30,7 @@ export default {
     },
     async _getCommentList({commit}:any,payload:any){
       let result = await getCommentList(payload);
+      console.log(result)
       commit('setCommentList',result.data.data.data)
     }
   }

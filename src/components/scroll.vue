@@ -1,7 +1,16 @@
 <template>
   <div class="person-wrap" ref="personWrap">
     <ul class="person-list" ref="personTab">
-      <li class="person-item" v-for="(item, index) in topicList" :key="index">
+      <li
+        class="person-item"
+        v-for="(item, index) in topicList"
+        :key="index"
+        @click="
+          () => {
+            $router.push(`/topListDetaild/${item.id}`);
+          }
+        "
+      >
         <span><img v-lazy="item.scene_pic_url" alt=""/></span>
         <span
           >{{ item.title }}<em>￥{{ item.price_info }}元起</em></span

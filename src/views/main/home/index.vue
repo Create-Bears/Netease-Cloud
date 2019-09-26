@@ -29,9 +29,11 @@
             <div
               v-for="(item, index) in brandList"
               :key="index"
-              @click="()=>{
-              $router.push(`/homeDetail/${item.id}`)
-              }"
+              @click="
+                () => {
+                  $router.push(`/homeDetail/${item.id}`);
+                }
+              "
             >
               <span class="names">{{ item.name }}</span>
               <span>
@@ -49,9 +51,11 @@
             <div
               v-for="(item, index) in newGoodsList"
               :key="index"
-              @click="()=>{
-               $router.push(`/productDetail/${item.id}`)
-              }"
+              @click="
+                () => {
+                  $router.push(`/productDetail/${item.id}`);
+                }
+              "
             >
               <Item :Item="item" />
             </div>
@@ -65,9 +69,11 @@
             <div
               v-for="(item, index) in hotGoodsList"
               :key="index"
-              @click="()=>{
-               $router.push(`/productDetail/${item.id}`)
-              }"
+              @click="
+                () => {
+                  $router.push(`/productDetail/${item.id}`);
+                }
+              "
             >
               <div class="imgs">
                 <span>
@@ -91,7 +97,11 @@
           </div>
         </div>
         <div class="smallFive">
-          <div class="bigWrapper" v-for="(item, index) in categoryList" :key="index">
+          <div
+            class="bigWrapper"
+            v-for="(item, index) in categoryList"
+            :key="index"
+          >
             <div class="title">
               <h3>{{ item.name }}</h3>
             </div>
@@ -99,18 +109,15 @@
               <div
                 v-for="(itm, index) in item.goodsList"
                 :key="index"
-                @click="()=>{
-               $router.push(`/productDetail/${itm.id}`)
-              }"
+                @click="
+                  () => {
+                    $router.push(`/productDetail/${itm.id}`);
+                  }
+                "
               >
                 <Item :Item="itm" />
-                <!-- <span>
-                  <img v-lazy="itm.list_pic_url" alt />
-                </span>
-                <span class="names">{{ itm.name }}</span>
-                <span class="price">{{ itm.retail_price }}元起</span>-->
               </div>
-              <div class="last">
+              <div class="last" @click="jumpCategorys(item.id)">
                 <span>更多{{ item.name }}好物</span>
                 <span>
                   <img src="@/static/images/back.png" alt />

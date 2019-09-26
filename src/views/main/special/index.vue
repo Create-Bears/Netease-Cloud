@@ -1,9 +1,16 @@
 <template>
   <div class="main">
     <div class="main-container">
-      <div class="lists" v-for="(item, index) in getTop" :key="index" @click="()=>{
-          $router.push(`/topListDetaild/${item.id}`)
-        }">
+      <div
+        class="lists"
+        v-for="(item, index) in getTop"
+        :key="index"
+        @click="
+          () => {
+            $router.push(`/topListDetaild/${item.id}`);
+          }
+        "
+      >
         <div class="fonts">
           <span><img v-lazy="item.scene_pic_url" alt=""/></span>
           <span class="title">{{ item.title }}</span>

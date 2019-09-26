@@ -14,18 +14,24 @@
         <div class="content"></div>
       </main>
       <footer class="footer">
-        <div @click="()=>{
-          this.addressShow=true
-          }">新建地址</div>
+        <div
+          @click="
+            () => {
+              this.addressShow = true;
+            }
+          "
+        >
+          新建地址
+        </div>
       </footer>
     </div>
-    <AddAddress v-show="addressShow" @handCancelAddress="handCancel"/>
+    <AddAddress v-show="addressShow" @handCancelAddress="handCancel" />
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
-import AddAddress from '@/components/addAddress'
+import AddAddress from "@/components/addAddress";
 export default {
   data() {
     return {
@@ -34,14 +40,14 @@ export default {
   },
   methods: {
     ...mapActions("address", ["_getAddressList"]),
-    handCancel(flag){
-     this.addressShow=flag
+    handCancel(flag) {
+      this.addressShow = flag;
     }
   },
   mounted() {
     this._getAddressList();
   },
-  components:{
+  components: {
     AddAddress
   }
 };

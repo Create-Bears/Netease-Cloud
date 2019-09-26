@@ -13,7 +13,13 @@
           <i class="iconfont icon-wodeshoucang_l-copy"></i>
           <div>我的收藏</div>
         </div>
-        <div @click="()=>{this.$router.push('/address')}">
+        <div
+          @click="
+            () => {
+              this.$router.push('/address');
+            }
+          "
+        >
           <i class="iconfont icon-dizhiguanli-copy"></i>
           <div>地址管理</div>
         </div>

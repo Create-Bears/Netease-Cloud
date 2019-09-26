@@ -35,6 +35,7 @@ export default {
   methods: {
     clicks(id) {
       this.current = id;
+      this.$store.commit('category/setId',id)
       this.$store.dispatch("category/_getCategoryCurrent", id);
       this.$store.dispatch("category/_getGoodsList", {
         page: 1,

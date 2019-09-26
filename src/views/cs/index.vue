@@ -30,19 +30,21 @@ export default {
   },
   methods: {
     onRefresh(mun) {
+      console.log(mun)
       //刷新回调
       setTimeout(() => {
         this.$root.$emit("setState", 3);
       }, 500);
     },
     onPull(mun) {
+      console.log(mun)
       //加载回调
       if (this.page.counter <= this.page.total) {
         setTimeout(() => {
           this.page.counter++;
           this.$root.$emit("setState", 5);
           for (let i = 0; i < 10; i++) {
-            this.listdata.push({});
+            // this.listdata.push({});
           }
         }, 500);
       } else {
@@ -56,7 +58,7 @@ export default {
   created() {
     this.$store.dispatch("main/_getTopLists", {
       page: 1,
-      size: 100
+      size: 10
     });
   },
   computed: mapState({
@@ -64,9 +66,18 @@ export default {
   }),
   mounted() {
     for (let i = 0; i < 1 * 50; i++) {
-      this.list.push({});
+      // this.list.push({});
     }
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.index{
+  font-size: 0.14rem;
+  touch-action: none;
+  img{
+    width: 100%;
+    height: 2rem;
+  }
+}
+</style>

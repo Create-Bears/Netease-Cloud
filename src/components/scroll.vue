@@ -7,9 +7,8 @@
         :key="index"
         @click="
           () => {
-            $router.push(`/topListDetaild/${item.id}`);
-          }
-        "
+            $router.push(`/topListDetaild/${item.id}`)
+          }"
       >
         <span><img v-lazy="item.scene_pic_url" alt=""/></span>
         <span

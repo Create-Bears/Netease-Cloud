@@ -49,6 +49,12 @@
   height: 0.3rem;
   line-height: 0.3rem;
   font-size: 0.16rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleLine div:nth-child(2) {
+  padding-right: 0.2rem;
 }
 
 .commentList {

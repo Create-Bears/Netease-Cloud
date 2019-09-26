@@ -9,7 +9,8 @@ export default {
   state: {
     navLink: [],
     goodList: [],
-    currentCategory: {}
+    currentCategory: {},
+    id: null,
   },
   mutations: {
     getCategory(state: any, payload: any) {
@@ -19,7 +20,23 @@ export default {
       state.currentCategory = payload.currentCategory;
     },
     getGood(state: any, payload: any) {
-      state.goodList = payload.goodsList;
+      state.goodList = payload.goodsList
+      // payload.goodsList.map((item:any)=>{
+      //   return state.goodList.push(item)
+      // })
+    },
+    setGoodList(state: any, payload: any) {
+      state.goodList = [
+        { id: 1, name: "1234" },
+        { id: 2, name: "2234" },
+        { id: 3, name: "3234" },
+        { id: 4, name: "4234" },
+        { id: 5, name: "4234" },
+        { id: 6, name: "4234" },
+      ]
+    },
+    setId(state: any, payload: any) {
+      state.id = payload;
     }
   },
   actions: {

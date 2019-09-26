@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       isShow: false,
-      id:0,
+      id: 0
     };
   },
   computed: mapState({
@@ -71,7 +71,7 @@ export default {
       this.isShow = data;
     },
     handClickDetail(id) {
-      this.id=id;
+      this.id = id;
       this._getTopList(id);
       this._getTopListRelated(id);
       this._getCommentList({

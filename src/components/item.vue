@@ -28,6 +28,7 @@ export default {
     dd{
       text-align: center;
       line-height: 0.3rem;;
+      font-size: 0.12rem;
       p:nth-child(2){
         color:red;
       }

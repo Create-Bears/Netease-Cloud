@@ -15,7 +15,7 @@
         <div class="swiperCon">
           <swiper :options="swiperOption">
             <swiper-slide v-for="item in detailList.gallery" :key="item.id">
-              <img :src="item.img_url" alt />
+              <img v-lazy="item.img_url" alt />
             </swiper-slide>
             <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
           </swiper>

@@ -10,16 +10,36 @@
     <main class="main">
       <div class="content">
         <div>
-          <input placeholder="姓名" type="text" />
+          <input
+            placeholder="姓名"
+            type="text"
+            v-on:input="handle"
+            v-model="val"
+          />
         </div>
         <div>
-          <input placeholder="电话号码" type="text" />
+          <input
+            placeholder="电话号码"
+            type="number"
+            v-on:input="handleTel"
+            v-model="tel"
+          />
         </div>
         <div>
-          <input placeholder="地址" type="text" />
+          <input
+            placeholder="地址"
+            type="text"
+            v-on:input="handleAddress"
+            v-model="address"
+          />
         </div>
         <div>
-          <input placeholder="详细地址" type="text" />
+          <input
+            placeholder="详细地址"
+            type="text"
+            v-on:input="handleDetailAddress"
+            v-model="detailAddress"
+          />
         </div>
         <p>
           设为默认地址
@@ -29,18 +49,46 @@
     </main>
     <footer class="footer">
       <span @click="handCancel">取消</span>
-      <span>保存</span>
+      <span @click="handCancel">保存</span>
     </footer>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    handCancel(){
-      this.$emit('handCancelAddress',false)
-    }
+  data() {
+    return {
+      val: "",
+      tel: "",
+      address: "",
+      detailAddress: ""
+    };
   },
+  methods: {
+    handCancel() {
+      this.$emit("handCancelAddress", false);
+    },
+    handle(e) {
+      // eslint-disable-next-line no-console
+      console.log(e.target.value);
+      this.val = e.target.value;
+    },
+    handleTel(e) {
+      // eslint-disable-next-line no-console
+      console.log(e.target.value);
+      this.tel = e.target.value;
+    },
+    handleAddress(e) {
+      // eslint-disable-next-line no-console
+      console.log(e.target.value);
+      this.address = e.target.value;
+    },
+    handleDetailAddress(e) {
+      // eslint-disable-next-line no-console
+      console.log(e.target.value);
+      this.detailAddress = e.target.value;
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -94,7 +142,7 @@ export default {
         margin-top: 1px;
       }
     }
-    p{
+    p {
       width: 100%;
       height: 0.5rem;
       text-align: center;

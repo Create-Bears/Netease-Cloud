@@ -23,8 +23,8 @@ export default {
       page: {
         counter: 1,
         pageStart: 1,
-        pageEnd: 1,
-        total: 10
+        pageEnd: 10,
+        total: 100
       }
     };
   },

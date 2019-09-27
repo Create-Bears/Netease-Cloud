@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import Logger from 'vuex/dist/logger'
 import login from "./modules/login";
 import classify from "./modules/classify";
 import search from "./modules/search";
@@ -25,5 +26,6 @@ export default new Vuex.Store({
     address,
     homeDetail,
     topList
-  }
+  },
+  plugins:[Logger()]
 });

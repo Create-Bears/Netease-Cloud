@@ -105,10 +105,10 @@
     </main>
     <footer class="footer">
       <div class="islike">
-        <span>☆</span>
+        <span :class="addorFlag?'active':'null'" @click="handAdd">☆</span>
+        <!-- <span v-if="!addorFlag" :class="addorFlag?'active':'null'">★</span> -->
       </div>
       <div class="cartNum">
-        
         <span class="iconfont" @click="handShopcarDetail">&#xf0179;</span>
         <p>{{goodsCount}}</p>
       </div>
@@ -144,7 +144,8 @@ export default {
         },
         mousewheelControl: true
       },
-      dialogShow: false
+      dialogShow: false,
+      
     };
   },
   computed: mapState({
@@ -156,7 +157,8 @@ export default {
     attribute: store => store.detail.attribute,
     issue: store => store.detail.issue,
     productList: store => store.detail.productList,
-    goodsCount:store=>store.shopcar.goodsCount
+    goodsCount:store=>store.shopcar.goodsCount,
+    addorFlag:store=>store.detail.addorFlag
   }),
   mounted() {
     let id = this.$route.params.id;
@@ -189,6 +191,13 @@ export default {
     //点击进入购物车页面
     handShopcar() {
       this.$router.push("/main/shopcar");
+    },
+    handAdd(){
+      let id = this.$route.params.id;
+      this.$store.dispatch("detail/_addorDelete", {
+        valueId: id,
+        typeId: 0
+      });
     }
   },
   components: {

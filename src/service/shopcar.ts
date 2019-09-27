@@ -20,3 +20,19 @@ export let setChecked=(params:any)=>{
   let url="/cart/checked";
   return request.post(url,params)
 }
+
+//添加到收藏列表
+export let addorDelete=(params:any)=>{
+  let url="/collect/addordelete";
+  return request.post(url,params)
+}
+
+//获取收藏列表数据
+export let getCollect=(id:any)=>{
+  let url ="/collect/list";
+  return request.get(url,{
+    params:{
+      typeId:id
+    }
+  })
+}

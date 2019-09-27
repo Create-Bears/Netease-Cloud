@@ -1,118 +1,14 @@
 <template>
   <div class="bscroll-warp" ref="scroll_wrapper">
     <div style="width:100%;height:auto">
-      <div v-show="is_pull_down" class="down_refresh">{{ loading_msg }}</div>
-      <slot></slot>
-      <div v-show="is_pull_up" class="upload_more">{{ loading_msg }}</div>
+      <div class="down_refresh">{{ msgDown }}</div>
+      <slot :data="list.value"></slot>
+      <div class="upload_more">{{ msgUp }}</div>
     </div>
   </div>
 </template>
 
 <script>
-import BScroll from "better-scroll";
-export default {
-  data() {
-    return {
-      is_pull_down: false, //配合做 loading 动画
-      is_pull_up: false, //配合做 loading 动画
-      scroll: null,
-      loading_msg: "玩命加载中... 请耐心等待",
-      timeout_lock: null //超时设置
-      // "没有更多数据了"
-    };
-  },
-  props: [
-    "handleRefresh", //下拉刷新的回调
-    "handleLoadMore", //上啦加载的回调
-    "value",
-    "page",
-    "pageSize",
-    "categoryId"
-    // "query",
-    // "limit",
-    // "count",
-    // "ishandlefinish" //是否结束加载
-  ],
-  mounted() {
-    const eleScroll = this.$refs.scroll_wrapper;
-    // eslint-disable-next-line no-console
-    console.log(eleScroll);
-    // 实例化
-    this.scroll = new BScroll(this.$refs.scroll_wrapper, {
-      pullDownRefresh: {
-        threshold: 50,
-        stop: 40
-      },
-      pullUpLoad: {
-        threshold: 50,
-        stop: 40
-      },
-      threshold: 3,
-      click: true,
-      mouseWheel: true
-    });
-    //监听下拉事件
-    this.scroll.on("pullingDown", () => {
-      // eslint-disable-next-line no-console
-      console.log(123);
-      this.is_pull_down = true;
-      this.loading_msg = "玩命加载中... 请耐心等待";
-      //数据请求替换
-      // this.handleRefresh();
-      this.refreshDispatch();
-    });
-    //监听上拉加载
-    this.scroll.on("pullingUp", () => {
-      this.is_pull_up = true;
-      this.loading_msg = "玩命加载中... 请耐心等待";
-      // connect 拼接数据
-      this.handleLoadMore();
-      this.loadMoreDispatch();
-    });
-  },
-  methods: {
-    loadMoreDispatch() {
-      // eslint-disable-next-line no-console
-      console.log("handleLoadMore");
-      setTimeout(() => {
-        this.$store.dispatch("category/_getGoodsList", {
-          page: this.page,
-          size: this.pageSize,
-          categoryId: this.categoryId
-        });
-      }, 1000);
-    },
-    refreshDispatch() {
-      // eslint-disable-next-line no-console
-      console.log(123);
-      setTimeout(() => {
-        this.$store.commit("category/setGoodList");
-      }, 2000);
-    }
-  },
-  watch: {
-    value() {
-      if (this.is_pull_down) {
-        this.loading_msg = "加载完成";
-        setTimeout(() => {
-          this.scroll.finishPullDown();
-          this.is_pull_down = false;
-          this.scroll.refresh();
-        }, 300);
-        return;
-      }
-      if (this.is_pull_up) {
-        this.loading_msg = "加载完成";
-        setTimeout(() => {
-          this.scroll.finishPullUp();
-          this.is_pull_up = false;
-          this.scroll.refresh();
-        }, 200);
-        return;
-      }
-    }
-  }
-};
 // @props {
 //     list: {
 //         query?: {[key:string]:any}, 查询条件
@@ -123,6 +19,98 @@ export default {
 //         value: Array<{[key:string]:any}> 查询结果  渲染结果
 //     }
 // }
+import BScroll from "better-scroll";
+import { mapActions, mapState } from "vuex";
+export default {
+  data() {
+    return {
+      //这是上拉下拉显示的提示信息
+      bscrollData: {
+        up: "释放刷新...",
+        upend: "刷新中...",
+        down: "释放加载...",
+        downEnd: "上拉加载..."
+      },
+      msgDown: "",
+      msgUp: ""
+    };
+  },
+  props: {
+    list: {
+      type: Object,
+      default: () => {
+        return {
+          query: {}, //查询条件
+          limit: 10, //每次查询的数量
+          count: 1000, //总共返回的长度
+          refreshDispatch: "category/pullRefresh", //下拉加载的actions
+          loadMoreDispatch: "category/loadMore", //上拉加载的actions
+          value: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 渲染的数据
+        };
+      }
+    }
+  },
+  methods: {
+    //下拉刷新
+    scrollUp(e) {
+      let maxH = Math.abs(this.bScroll.maxScrollY);
+      let h = Math.abs(e.y);
+      if (h > maxH + 100) {
+        this.isFlag = true;
+        this.msgDown = this.bscrollData.down;
+      } else {
+        this.isFlag = false;
+        this.msgDown = this.bscrollData.downEnd;
+      }
+      if (e.y > 70) {
+        this.msgUp = this.bscrollData.up;
+      } else {
+        this.msgUp = this.bscrollData.upend;
+      }
+    },
+    async pullRefresh() {
+      await this.$store.dispatch(this.list.refreshDispatch);
+    },
+    async loadMore(payload) {
+      await this.$store.dispatch(this.list.loadMoreDispatch, payload);
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      if (!this.bScroll) {
+        this.bScroll = new BScroll(".bscroll-warp", {
+          scrollY: true,
+          click: true,
+          probeType: 3,
+          mouseWheel: {
+            speed: 20,
+            invert: false,
+            easeTime: 300
+          },
+          pullDownRefresh: {
+            threshold: 70,
+            stop: 45
+          },
+          pullUpLoad: {
+            threshold: -45
+          }
+        });
+        this.bScroll.on("scroll", this.scrollUp);
+        this.bScroll.on("pullingDown", async () => {
+          await this.pullRefresh();
+          console.log("网络请求结束");
+          this.bScroll.finishPullDown();
+        });
+        this.bScroll.on("pullingUp", async () => {
+          await this.loadMore({ page: this.list.query.page + 1 });
+          this.bScroll.finishPullUp();
+        });
+      } else {
+        this.bScroll.refresh();
+      }
+    });
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -139,8 +127,11 @@ export default {
   }
 }
 .down_refresh {
-  position: relative;
+  position: absolute;
+  width: 100%;
   z-index: 999;
+  height: 0.4rem;
+  top: -0.4rem;
   line-height: 0.4rem;
   text-align: center;
   background-color: lightblue;

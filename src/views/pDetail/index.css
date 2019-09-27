@@ -249,6 +249,11 @@
   font-weight: bolder;
 }
 
+.footer .islike .active {
+  color: yellow;
+  font-weight: 800;
+}
+
 .footer .cartNum {
   width: 20%;
   height: 100%;

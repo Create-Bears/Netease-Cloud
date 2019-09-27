@@ -11,6 +11,17 @@ export default {
     goodList: [],
     currentCategory: {},
     id: null,
+    query: {
+      brandId: '',
+      categoryId: '',
+      sort: '',
+      order: '',
+      page: 1,
+      size: ''
+    },
+    limit: 10,
+    count: 0,
+    value: []
   },
   mutations: {
     getCategory(state: any, payload: any) {
@@ -21,23 +32,28 @@ export default {
     },
     getGood(state: any, payload: any) {
       state.goodList = payload.goodsList
-      // payload.goodsList.map((item:any)=>{
-      //   return state.goodList.push(item)
-      // })
     },
     setGoodList(state: any, payload: any) {
-      state.goodList = [
-        { id: 1, name: "1234" },
-        { id: 2, name: "2234" },
-        { id: 3, name: "3234" },
-        { id: 4, name: "4234" },
-        { id: 5, name: "4234" },
-        { id: 6, name: "4234" },
-      ]
+    
     },
     setId(state: any, payload: any) {
       state.id = payload;
-    }
+    },
+    //改变传递的椰树
+    setPage(state: any, payload: any){
+      state.query.page = payload;
+    },
+    appendValue(state: any, payload: any){
+      state.value = state.value.concat(payload.data.data);
+      state.count = payload.data.count;
+    },
+    setValue(state: any, payload: any){
+      state.value = payload.data.data;
+      state.count = payload.data.count;
+    },
+    setCategoryId(state: any, payload:string){
+      state.query.categoryId = payload;
+    },
   },
   actions: {
     async _getCategoryList({ commit }: any, payload: any) {
@@ -51,6 +67,30 @@ export default {
     async _getGoodsList({ commit }: any, payload: any) {
       let result = await getGoodsList(payload);
       commit("getGood", result.data.data);
+    },
+    async pullRefresh({commit,state}:any,payload:any){
+      commit('setPage',1)
+      let params:any={};
+      for(let key in state.query){
+        if(state.query[key]){
+          params[key]=state.query[key]
+        }
+      }
+      let result = await getGoodsList(params);
+      commit('setValue', result.data);
+    },
+    async loadMore({commit,state}:any,{page}:any){
+      console.log(page)
+      commit('setPage',page)
+      let params:any={};
+      for(let key in state.query){
+        if(state.query[key]){
+          params[key]=state.query[key]
+        }
+      }
+      let result = await getGoodsList(params);
+      console.log(result)
+      commit('appendValue', result.data);
     }
   }
 };

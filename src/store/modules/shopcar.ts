@@ -37,6 +37,7 @@ export default {
     async _setChecked({commit}:any,payload:any){
       let result = await setChecked(payload);
       commit('setshopcarList',result.data.data)
-    }
+    },
+    
   }
 }

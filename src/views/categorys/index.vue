@@ -11,33 +11,33 @@
     <main class="main">
       <div class="main-content">
         <Bscroll
-          :handleRefresh="handleRefresh"
-          :handleLoadMore="handleLoadMore"
-          :value="goodList"
-          :page="page"
-          :pageSize="pageSize"
-          :categoryId="$route.query.id"
-          @changePage="handChange"
+          :list="{
+           ...category,
+          refreshDispatch: 'category/pullRefresh',
+          loadMoreDispatch: 'category/loadMore'
+         }"
         >
-          <div class="main-container">
-            <div class="categoryDetail">
-              <div>{{ currentCategory.name }}</div>
-              <div>{{ currentCategory.front_name }}</div>
-            </div>
+          <template v-slot:default="slotProps">
+            <div class="main-container">
+              <div class="categoryDetail">
+                <div>{{ currentCategory.name }}</div>
+                <div>{{ currentCategory.front_name }}</div>
+              </div>
 
-            <div class="goodsList">
-              <!-- {{goodList}} -->
-              <div
-                v-for="(itm, index) in goodList"
-                :key="index"
-                @click="()=>{
+              <div class="goodsList">
+
+                <div
+                  v-for="(itm, index) in slotProps.data"
+                  :key="index"
+                  @click="()=>{
               $router.push(`/productDetail/${itm.id}`)
               }"
-              >
-                <Item :item="itm" />
+                >
+                  <Item :item="itm" />
+                </div>
               </div>
             </div>
-          </div>
+          </template>
         </Bscroll>
       </div>
     </main>
@@ -65,34 +65,20 @@ export default {
     Bscroll
   },
   methods: {
-    handleRefresh() {
-      // console.log("handleRefresh");
-      // setTimeout(() => {
-      //   this.goodsList = [
-      //     { id: 1, name: "1234" },
-      //     { id: 2, name: "2234" },
-      //     { id: 3, name: "3234" },
-      //     { id: 4, name: "4234" }
-      //   ];
-      //   console.log(this.goodsList.length);
-      // }, 2000);
-    },
-    handleLoadMore() {
-      this.page++;
-    },
-    handChange(page) {
-      this.page = page;
-    }
+    
   },
   computed: {
     ...mapState({
       currentCategory: state => state.category.currentCategory,
       goodList: state => state.category.goodList,
-      id: state => state.category.id
+      id: state => state.category.id,
+      category: state => state.category
     })
   },
   mounted() {
     this.goodsList = this.$store.state.category.goodList;
+    this.$store.commit('category/setCategoryId', this.$route.query.id)
+    this.$store.dispatch('category/pullRefresh')
   },
   created() {
     this.$store.dispatch("category/_getCategoryList", this.$route.query.id);

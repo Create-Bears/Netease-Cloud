@@ -20,7 +20,8 @@ export default {
   name: "Scrolls",
   computed: {
     ...mapState({
-      navLink: state => state.category.navLink
+      navLink: state => state.category.navLink,
+      id: state => state.category.id
     })
   },
   data() {
@@ -35,13 +36,15 @@ export default {
   methods: {
     clicks(id) {
       this.current = id;
-      this.$store.commit('category/setId',id)
+      this.$store.commit("category/setId", id);
       this.$store.dispatch("category/_getCategoryCurrent", id);
-      this.$store.dispatch("category/_getGoodsList", {
-        page: 1,
-        size: 1000,
-        categoryId: id
-      });
+      this.$store.commit('category/setCategoryId', id)
+      this.$store.dispatch("category/pullRefresh");
+      // this.$store.dispatch("category/_getGoodsList", {
+      //   page: 1,
+      //   size: 1000,
+      //   categoryId: id
+      // });
     },
     initScroller() {
       // 默认有5个li子元素，每个子元素的宽度为320px

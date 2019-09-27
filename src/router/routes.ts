@@ -111,5 +111,10 @@ export default [
     path:'/topListCommentDetail/:id',
     name:'topListCommentDetail',
     component:()=>import('@/views/topListCommentDetail/index.vue')
+  },
+  {
+    path:'/collect',
+    name:'collect',
+    component:()=>import('@/views/collect/index.vue')
   }
 ];

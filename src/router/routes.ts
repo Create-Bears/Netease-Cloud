@@ -106,5 +106,10 @@ export default [
     path:'/topListDetaild/:id',
     name:'topListDetaild',
     component:()=>import('@/views/topListDetail/index.vue')
+  },
+  {
+    path:'/topListCommentDetail/:id',
+    name:'topListCommentDetail',
+    component:()=>import('@/views/topListCommentDetail/index.vue')
   }
 ];

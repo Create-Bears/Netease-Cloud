@@ -15,3 +15,8 @@ export let cartCount =()=>{
   let url='/cart/goodscount';
   return request.get(url);
 }
+
+export let setChecked=(params:any)=>{
+  let url="/cart/checked";
+  return request.post(url,params)
+}

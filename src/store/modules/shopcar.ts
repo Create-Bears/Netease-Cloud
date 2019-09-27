@@ -1,4 +1,4 @@
-import {getShopcarList,addCartList,cartCount} from '@/service'
+import {getShopcarList,addCartList,cartCount,setChecked} from '@/service'
 
 export default {
   namespaced:true,
@@ -24,6 +24,7 @@ export default {
       console.log(result)
       commit('setshopcarList',result.data.data)
     },
+    //添加购物车数据
     async _addCartList({commit}:any,payload:any){
       let result = await addCartList(payload);
       console.log(result)
@@ -31,7 +32,11 @@ export default {
     //获取购物车的总数量
     async _cartCount({commit}:any){
       let result = await cartCount();
-      commit('setGoodsCount',result.data.data)
+      commit('setGoodsCount',result.data.data);
+    },
+    async _setChecked({commit}:any,payload:any){
+      let result = await setChecked(payload);
+      commit('setshopcarList',result.data.data)
     }
   }
 }

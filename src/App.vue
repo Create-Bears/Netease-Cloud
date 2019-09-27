@@ -26,5 +26,6 @@ html {
 }
 .container {
   font-size: 14px;
+  background-color: #fff;
 }
 </style>

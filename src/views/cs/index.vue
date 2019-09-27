@@ -30,14 +30,16 @@ export default {
   },
   methods: {
     onRefresh(mun) {
-      console.log(mun)
+      // eslint-disable-next-line no-console
+      console.log(mun);
       //刷新回调
       setTimeout(() => {
         this.$root.$emit("setState", 3);
       }, 500);
     },
     onPull(mun) {
-      console.log(mun)
+      // eslint-disable-next-line no-console
+      console.log(mun);
       //加载回调
       if (this.page.counter <= this.page.total) {
         setTimeout(() => {
@@ -72,10 +74,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.index{
+.index {
   font-size: 0.14rem;
   touch-action: none;
-  img{
+  img {
     width: 100%;
     height: 2rem;
   }

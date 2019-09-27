@@ -1,9 +1,9 @@
 <template>
   <div class="bscroll-warp" ref="scroll_wrapper">
     <div style="width:100%;height:auto">
-      <div v-show="is_pull_down" class="down_refresh">{{loading_msg}}</div>
+      <div v-show="is_pull_down" class="down_refresh">{{ loading_msg }}</div>
       <slot></slot>
-      <div v-show="is_pull_up" class="upload_more">{{loading_msg}}</div>
+      <div v-show="is_pull_up" class="upload_more">{{ loading_msg }}</div>
     </div>
   </div>
 </template>
@@ -35,6 +35,7 @@ export default {
   ],
   mounted() {
     const eleScroll = this.$refs.scroll_wrapper;
+    // eslint-disable-next-line no-console
     console.log(eleScroll);
     // 实例化
     this.scroll = new BScroll(this.$refs.scroll_wrapper, {
@@ -52,6 +53,7 @@ export default {
     });
     //监听下拉事件
     this.scroll.on("pullingDown", () => {
+      // eslint-disable-next-line no-console
       console.log(123);
       this.is_pull_down = true;
       this.loading_msg = "玩命加载中... 请耐心等待";
@@ -70,6 +72,7 @@ export default {
   },
   methods: {
     loadMoreDispatch() {
+      // eslint-disable-next-line no-console
       console.log("handleLoadMore");
       setTimeout(() => {
         this.$store.dispatch("category/_getGoodsList", {
@@ -80,6 +83,7 @@ export default {
       }, 1000);
     },
     refreshDispatch() {
+      // eslint-disable-next-line no-console
       console.log(123);
       setTimeout(() => {
         this.$store.commit("category/setGoodList");

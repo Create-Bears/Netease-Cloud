@@ -36,8 +36,7 @@
     </div>
   </div>
 </template>
-<script type="text/javascript">
-// import Load from "../assets/Load.gif";
+<script>
 export default {
   name: "myScroll",
   props: {

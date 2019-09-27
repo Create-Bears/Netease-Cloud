@@ -18,12 +18,12 @@ export let getTopListRelated = (id: any) => {
   })
 }
 
-export let getCommentList = (params: any) => {
-  let url = '/comment/list';
-  return request.get(url, {
-    params
-  })
-}
+// export let getCommentList = (params: any) => {
+//   let url = '/comment/list';
+//   return request.get(url, {
+//     params
+//   })
+// }
 
 export let addCommentData = (params: any) => {
   let url = '/comment/post';

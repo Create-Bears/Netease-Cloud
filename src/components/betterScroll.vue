@@ -98,6 +98,7 @@ export default {
         this.bScroll.on("scroll", this.scrollUp);
         this.bScroll.on("pullingDown", async () => {
           await this.pullRefresh();
+          // eslint-disable-next-line no-console
           console.log("网络请求结束");
           this.bScroll.finishPullDown();
         });

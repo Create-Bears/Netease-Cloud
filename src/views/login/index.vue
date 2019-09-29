@@ -2,7 +2,10 @@
   <div class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <img src="http://yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt />
+        <img
+          src="http://yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png"
+          alt
+        />
       </div>
       <div class="login-main">
         <div class="login-input">
@@ -42,10 +45,9 @@ export default {
           mobile: this.mobile,
           password: this.password
         });
-        if(this.session){
-          alert('登录成功')
-          this.$router.push('/main')
-        }
+        // eslint-disable-next-line no-console
+        alert("登录成功");
+        this.$router.push("/main");
       } else {
         alert("请输入完整正确信息");
       }

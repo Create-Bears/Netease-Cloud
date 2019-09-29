@@ -13,7 +13,8 @@
           @click="
             () => {
               this.$router.push('/collect');
-            }"
+            }
+          "
         >
           <i class="iconfont icon-wodeshoucang_l-copy"></i>
           <div>我的收藏</div>
@@ -22,7 +23,8 @@
           @click="
             () => {
               this.$router.push('/address');
-            }"
+            }
+          "
         >
           <i class="iconfont icon-dizhiguanli-copy"></i>
           <div>地址管理</div>
@@ -68,7 +70,9 @@
           <div>账户安全</div>
         </div>
       </div>
-      <div class="loginOut">退出登录</div>
+      <div class="loginOut" @click="cancleToken">
+        退出登录
+      </div>
     </div>
   </div>
 </template>
@@ -76,7 +80,15 @@
 <script>
 import "@/static/font/iconfont.css";
 import "./index.scss";
-export default {};
+export default {
+  name: "Address",
+  methods: {
+    cancleToken() {
+      this.$router.replace("/");
+      localStorage.removeItem("token");
+    }
+  }
+};
 </script>
 
 <style></style>

@@ -7,14 +7,18 @@ const instance = axios.create({
   headers:{'x-nideshop-token': window.localStorage.getItem('token')}
 });
 
-instance.interceptors.request.use(function (config) {
-  console.log(config)
-  // Do something before request is sent
-  return config;
-}, function (error) {
-  // Do something with request error
-  return Promise.reject(error);
-});
+instance.interceptors.request.use(
+  function(config) {
+    /* eslint-disable */
+        console.log(config)
+        // Do something before request is sent
+        return config
+    },
+    function(error) {
+        // Do something with request error
+        return Promise.reject(error)
+    }
+)
 
 // Add a response interceptor
 instance.interceptors.response.use(
@@ -32,4 +36,4 @@ instance.interceptors.response.use(
   }
 );
 
-export default instance;
+export default instance

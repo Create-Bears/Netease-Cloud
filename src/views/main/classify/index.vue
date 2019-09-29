@@ -11,7 +11,7 @@
           <li
             v-for="(item, index) in tabAllList"
             :key="item.id"
-            @click="handClick(index, item.id)"
+            @click="handClick(index, item.id,item.name)"
             :class="currentIndex === index ? 'activeLi' : 'null'"
           >
             {{ item.name }}
@@ -57,9 +57,10 @@ export default {
     this.$store.dispatch("classify/_getAllList");
   },
   methods: {
-    handClick(index, id) {
+    handClick(index, id,name) {
       this.currentIndex = index;
       this.$store.dispatch("classify/_navListData", { id });
+      window._hmt.push(['_trackEvent','Netease','click',name])
     },
     handDetail() {
       console.log(11);

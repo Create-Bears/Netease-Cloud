@@ -21,6 +21,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import { UserLogin } from "@/service";
 export default {
   data() {
     return {
@@ -29,7 +30,8 @@ export default {
     };
   },
   computed: mapState({
-    session: store => store.login.session
+    session: store => store.login.session,
+    msg: store => store.login.msg
   }),
   methods: {
     handSubmit() {
@@ -38,14 +40,17 @@ export default {
         this.password !== "" ||
         this.mobile !== ""
       ) {
-        this.$store.dispatch("login/getUserLogin", {
+        UserLogin({
           mobile: this.mobile,
           password: this.password
+        }).then(res => {
+          console.log(res.data.errno)
+          if (res.data.errno === 0) {
+            window.localStorage.setItem("token", res.data.data.sessionKey);
+            alert('登录成功')
+            this.$router.push('/main')
+          }
         });
-        if(this.session){
-          alert('登录成功')
-          this.$router.push('/main')
-        }
       } else {
         alert("请输入完整正确信息");
       }

@@ -1,31 +1,31 @@
 const Login = () =>
-  import(/* webpackChunkName: "login" */ "@/views/login/index.vue");
+  import("@/views/login/index.vue");
 
 const Main = () =>
-  import(/* webpackChunkName: "main" */ "@/views/main/index.vue");
+  import("@/views/main/index.vue");
 
 const Home = () =>
-  import(/* webpackChunkName: "home" */ "@/views/main/home/index.vue");
+  import("@/views/main/home/index.vue");
 
 const Special = () =>
-  import(/* webpackChunkName: "special" */ "@/views/main/special/index.vue");
+  import("@/views/main/special/index.vue");
 
 const Classify = () =>
-  import(/* webpackChunkName: "classify" */ "@/views/main/classify/index.vue");
+  import("@/views/main/classify/index.vue");
 
 const Shopcar = () =>
-  import(/* webpackChunkName: "shopcar" */ "@/views/main/shopcar/index.vue");
+  import("@/views/main/shopcar/index.vue");
 
 const Mine = () =>
-  import(/* webpackChunkName: "mine" */ "@/views/main/mine/index.vue");
+  import("@/views/main/mine/index.vue");
 
 const GoodsSearch = () =>
-  import(/* webpackChunkName: "goodsearch" */ "@/views/goodsSearch/index.vue");
+  import("@/views/goodsSearch/index.vue");
 
 const Categorys = () =>
-  import(/* webpackChunkName: "categorys" */ "@/views/categorys/index.vue");
+  import("@/views/categorys/index.vue");
 
-const Cs = () => import(/* webpackChunkName: "cs" */ "@/views/cs/index.vue");
+const Cs = () => import("@/views/cs/index.vue");
 export default [
   {
     path: "/",
@@ -94,27 +94,27 @@ export default [
     component: () => import("@/views/address/index.vue")
   },
   {
-    path:'/commentDetail/:id',
+    path: '/commentDetail/:id',
     name: "commentDetail",
     component: () => import("@/views/commentDetail/index.vue")
   },
   {
-    path:'/homeDetail/:id',
-    name:'homeDetail',
-    component:()=>import("@/views/homeDetail/index.vue")
-  },{
-    path:'/topListDetaild/:id',
-    name:'topListDetaild',
-    component:()=>import('@/views/topListDetail/index.vue')
+    path: '/homeDetail/:id',
+    name: 'homeDetail',
+    component: () => import("@/views/homeDetail/index.vue")
+  }, {
+    path: '/topListDetaild/:id',
+    name: 'topListDetaild',
+    component: () => import('@/views/topListDetail/index.vue')
   },
   {
-    path:'/topListCommentDetail/:id',
-    name:'topListCommentDetail',
-    component:()=>import('@/views/topListCommentDetail/index.vue')
+    path: '/topListCommentDetail/:id',
+    name: 'topListCommentDetail',
+    component: () => import('@/views/topListCommentDetail/index.vue')
   },
   {
-    path:'/collect',
-    name:'collect',
-    component:()=>import('@/views/collect/index.vue')
+    path: '/collect',
+    name: 'collect',
+    component: () => import('@/views/collect/index.vue')
   }
 ];

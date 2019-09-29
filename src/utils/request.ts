@@ -1,7 +1,8 @@
 import axios from "axios";
+import router from '@/router/router'
 
 const instance = axios.create({
-  baseURL: 'http://127.0.0.1:8888',
+  baseURL: /cyz.jasonandjay.com/.test(window.location.host)?'//easymarket.jasonandjay.com':'//169.254.191.25:8888',
   timeout:1000,
   headers:{'x-nideshop-token': window.localStorage.getItem('token')}
 });
@@ -18,6 +19,10 @@ instance.interceptors.request.use(function (config) {
 // Add a response interceptor
 instance.interceptors.response.use(
   function(response) {
+    console.log(response,'response....')
+    if(response.data.errno!==0){
+      alert(response.data.errmsg)
+    }
     // Do something with response data
     return response;
   },

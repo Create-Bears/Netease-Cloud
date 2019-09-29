@@ -27,3 +27,15 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+750*1334  6/7/8
+
+图片问题 // 多倍图
+
+1px问题
+
+ 
+pv  // page visit  pv>uv访问量  当pv为十万上是,uv5万左右
+uv  // unigue visit
